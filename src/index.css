@@ -1,0 +1,6475 @@
+/* =========================================================
+   AEGIS BOARD — LOGIN FONT
+   ========================================================= */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap");
+
+
+
+/* =========================================================
+   AEGIS BOARD — GLOBAL
+   ========================================================= */
+
+:root {
+  --aegis-canvas-bg: #ffffff;
+  --aegis-toolbar-bg: rgba(255, 255, 255, 0.96);
+  --aegis-border: #e4e4e7;
+  --aegis-text: #202124;
+  --aegis-muted: #737373;
+  --aegis-active: #e8e6ff;
+  --aegis-active-text: #2920a8;
+  --aegis-shadow: 0 8px 28px rgba(0, 0, 0, 0.09);
+  --aegis-purple: #6c63ff;
+}
+
+/* =========================================================
+   DARK THEME
+   ========================================================= */
+
+html[data-theme="dark"] {
+  --aegis-canvas-bg: #18181b;
+  --aegis-toolbar-bg: rgba(35, 35, 38, 0.96);
+  --aegis-border: #3f3f46;
+  --aegis-text: #f4f4f5;
+  --aegis-muted: #a1a1aa;
+  --aegis-active: #403c68;
+  --aegis-active-text: #d9d6ff;
+}
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  background: var(--aegis-canvas-bg);
+  color: var(--aegis-text);
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+/* =========================================================
+   APP
+   ========================================================= */
+
+.aegis-app {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--aegis-canvas-bg);
+}
+
+/* =========================================================
+   CANVAS
+   ========================================================= */
+
+.aegis-canvas {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  background: var(--aegis-canvas-bg);
+
+  cursor: default;
+
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+
+  z-index: 1;
+}
+
+/* SELECT */
+
+.aegis-canvas {
+  cursor: default;
+}
+
+/* DRAW */
+
+.aegis-canvas.draw-mode {
+  cursor: crosshair;
+}
+
+/* HAND */
+
+.aegis-canvas.hand-mode {
+  cursor: grab;
+}
+
+.aegis-canvas.hand-mode:active {
+  cursor: grabbing;
+}
+
+/* =========================================================
+   TOP TOOLBAR
+   ========================================================= */
+
+.top-toolbar {
+  position: fixed;
+
+  top: 14px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  display: flex;
+  align-items: center;
+
+  gap: 3px;
+
+  padding: 6px 8px;
+
+  min-height: 52px;
+
+  background: var(--aegis-toolbar-bg);
+
+  border: 1px solid var(--aegis-border);
+
+  border-radius: 12px;
+
+  box-shadow: var(--aegis-shadow);
+
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  z-index: 50;
+
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* =========================================================
+   TOP TOOL BUTTON
+   ========================================================= */
+
+.top-tool {
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: 0;
+  border-radius: 9px;
+
+  background: transparent;
+
+  color: var(--aegis-text);
+
+  cursor: pointer;
+
+  transition:
+    background 0.12s ease,
+    color 0.12s ease,
+    transform 0.08s ease;
+}
+
+.top-tool:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+html[data-theme="dark"] .top-tool:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.top-tool:active {
+  transform: scale(0.94);
+}
+
+.top-tool.active {
+  background: var(--aegis-active);
+  color: var(--aegis-active-text);
+}
+
+.top-tool:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.top-tool:disabled:active {
+  transform: none;
+}
+
+/* =========================================================
+   TOP TOOLBAR DIVIDER
+   ========================================================= */
+
+.top-toolbar-divider {
+  width: 1px;
+  height: 28px;
+  margin: 0 5px;
+  background: var(--aegis-border);
+}
+
+/* =========================================================
+   MAIN MENU BUTTON
+   ========================================================= */
+
+.menu-trigger {
+  position: fixed;
+
+  top: 18px;
+  left: 20px;
+
+  width: 44px;
+  height: 44px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: 1px solid var(--aegis-border);
+
+  border-radius: 10px;
+
+  background: var(--aegis-toolbar-bg);
+
+  color: var(--aegis-text);
+
+  cursor: pointer;
+
+  box-shadow:
+    0 4px 16px rgba(0, 0, 0, 0.07);
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  z-index: 60;
+
+  transition:
+    background 0.12s ease,
+    transform 0.08s ease;
+}
+
+.menu-trigger:hover {
+  background: var(--aegis-active);
+  color: var(--aegis-active-text);
+}
+
+.menu-trigger:active {
+  transform: scale(0.95);
+}
+
+/* =========================================================
+   MAIN MENU
+   ========================================================= */
+
+.aegis-menu {
+  position: fixed;
+
+  top: 68px;
+  left: 20px;
+
+  width: 284px;
+
+  max-height: calc(100vh - 82px);
+
+  overflow-y: auto;
+
+  padding: 8px;
+
+  background: var(--aegis-toolbar-bg);
+
+  border: 1px solid var(--aegis-border);
+
+  border-radius: 11px;
+
+  box-shadow:
+    0 12px 35px rgba(0, 0, 0, 0.12);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  z-index: 55;
+}
+
+/* =========================================================
+   MENU ITEM
+   ========================================================= */
+
+.menu-item {
+  width: 100%;
+  min-height: 42px;
+
+  display: grid;
+
+  grid-template-columns:
+    22px
+    minmax(0, 1fr)
+    auto;
+
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 8px 9px;
+
+  border: 0;
+  border-radius: 7px;
+
+  background: transparent;
+
+  color: var(--aegis-text);
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition: background 0.12s ease;
+}
+
+.menu-item:hover {
+  background: rgba(0, 0, 0, 0.055);
+}
+
+html[data-theme="dark"] .menu-item:hover {
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.menu-item svg {
+  color: var(--aegis-muted);
+}
+
+.menu-item kbd {
+  color: var(--aegis-muted);
+  font-size: 12px;
+  white-space: nowrap;
+  background: transparent;
+}
+
+.menu-item.danger:hover {
+  color: #b42318;
+}
+
+.menu-separator {
+  height: 1px;
+  margin: 7px 3px;
+  background: var(--aegis-border);
+}
+
+.menu-chevron {
+  color: var(--aegis-muted);
+  font-size: 20px;
+}
+
+.menu-label {
+  padding: 9px 10px 5px;
+  color: var(--aegis-muted);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* =========================================================
+   THEME SWITCHER
+   ========================================================= */
+
+.theme-switcher {
+  display: flex;
+  gap: 4px;
+
+  margin: 0 4px 7px;
+
+  padding: 4px;
+
+  border: 1px solid var(--aegis-border);
+
+  border-radius: 9px;
+}
+
+.theme-switcher button {
+  flex: 1;
+
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 0;
+  border-radius: 6px;
+
+  background: transparent;
+
+  color: var(--aegis-muted);
+
+  cursor: pointer;
+}
+
+.theme-switcher button:hover {
+  background: var(--aegis-active);
+  color: var(--aegis-active-text);
+}
+
+/* =========================================================
+   BACKGROUND OPTIONS
+   ========================================================= */
+
+.background-options {
+  display: flex;
+  gap: 5px;
+
+  padding: 0 4px 8px;
+}
+
+.background-options button {
+  flex: 1;
+
+  min-height: 32px;
+
+  border: 1px solid var(--aegis-border);
+
+  border-radius: 7px;
+
+  background: transparent;
+
+  color: var(--aegis-text);
+
+  cursor: pointer;
+}
+
+.background-options button:hover {
+  background: var(--aegis-active);
+}
+
+/* =========================================================
+   TEXT TOOLBAR
+   ========================================================= */
+
+.text-toolbar {
+  position: fixed;
+
+  top: 76px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  display: flex;
+  align-items: center;
+
+  gap: 5px;
+
+  padding: 6px;
+
+  background: var(--aegis-toolbar-bg);
+
+  border: 1px solid var(--aegis-border);
+
+  border-radius: 10px;
+
+  box-shadow:
+    0 5px 20px rgba(0, 0, 0, 0.07);
+
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  z-index: 45;
+
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* =========================================================
+   TEXT TOOLBAR SELECT
+   ========================================================= */
+
+.toolbar-select {
+  height: 34px;
+
+  min-width: 150px;
+
+  padding: 0 9px;
+
+  border: 1px solid var(--aegis-border);
+
+  border-radius: 7px;
+
+  background: var(--aegis-toolbar-bg);
+
+  color: var(--aegis-text);
+
+  outline: none;
+
+  cursor: pointer;
+}
+
+.toolbar-select:focus {
+  border-color: var(--aegis-purple);
+}
+
+/* =========================================================
+   FONT SIZE
+   ========================================================= */
+
+.font-size-input {
+  width: 62px;
+  height: 34px;
+
+  padding: 0 7px;
+
+  border: 1px solid var(--aegis-border);
+
+  border-radius: 7px;
+
+  background: var(--aegis-toolbar-bg);
+
+  color: var(--aegis-text);
+
+  text-align: center;
+
+  outline: none;
+}
+
+.font-size-input:focus {
+  border-color: var(--aegis-purple);
+}
+
+/* =========================================================
+   PROPERTY BUTTON
+   ========================================================= */
+
+.property-button {
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: 0;
+  border-radius: 7px;
+
+  background: transparent;
+
+  color: var(--aegis-text);
+
+  cursor: pointer;
+
+  transition: background 0.12s ease;
+}
+
+.property-button:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+html[data-theme="dark"] .property-button:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.property-button.active {
+  background: var(--aegis-active);
+  color: var(--aegis-active-text);
+}
+
+/* =========================================================
+   COLOR INPUT
+   ========================================================= */
+
+.color-input {
+  width: 34px;
+  height: 34px;
+
+  padding: 3px;
+
+  border: 1px solid var(--aegis-border);
+
+  border-radius: 7px;
+
+  background: var(--aegis-toolbar-bg);
+
+  cursor: pointer;
+}
+
+/* =========================================================
+   PROPERTY PANEL
+   ========================================================= */
+
+.properties-panel {
+  position: fixed;
+
+  top: 76px;
+  left: 12px;
+
+  width: 250px;
+
+  max-height: calc(100vh - 90px);
+
+  overflow-y: auto;
+
+  padding: 14px;
+
+  border-radius: 10px;
+
+  background: var(--aegis-toolbar-bg);
+
+  border: 1px solid var(--aegis-border);
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.12);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  color: var(--aegis-text);
+
+  z-index: 40;
+}
+
+.disabled-property {
+  opacity: 0.45;
+}
+
+.property-hint {
+  margin-top: 7px;
+  color: var(--aegis-muted);
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+.fill-grid {
+  display: flex;
+  gap: 8px;
+}
+
+.fill-choice {
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 0;
+  border-radius: 8px;
+
+  background: rgba(255, 255, 255, 0.06);
+
+  color: var(--aegis-text);
+
+  cursor: pointer;
+}
+
+.fill-choice.disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* =========================================================
+   PROPERTY SECTION
+   ========================================================= */
+
+.property-section {
+  margin-bottom: 18px;
+}
+
+.property-title {
+  margin-bottom: 9px;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  color: var(--aegis-text);
+}
+
+/* =========================================================
+   COLOR ROW
+   ========================================================= */
+
+.color-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* =========================================================
+   STROKE SWATCH
+   ========================================================= */
+
+.stroke-swatch,
+.color-swatch {
+  width: 31px;
+  height: 31px;
+
+  padding: 0;
+
+  border: 2px solid transparent;
+
+  border-radius: 6px;
+
+  cursor: pointer;
+}
+
+.stroke-swatch.selected,
+.color-swatch.selected {
+  border-color: var(--aegis-purple);
+
+  box-shadow:
+    0 0 0 1px
+    rgba(108, 99, 255, 0.2);
+}
+
+/* =========================================================
+   CUSTOM COLOR
+   ========================================================= */
+
+.custom-color {
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+
+  padding: 2px;
+
+  border: 1px solid var(--aegis-border);
+
+  border-radius: 6px;
+
+  background: transparent;
+
+  cursor: pointer;
+}
+
+.custom-color input {
+  width: 100%;
+  height: 100%;
+
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  cursor: pointer;
+}
+
+/* =========================================================
+   GENERIC PROPERTY GRIDS
+   ========================================================= */
+
+.property-button-grid {
+  display: grid;
+  gap: 7px;
+}
+
+.font-grid {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.size-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.align-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* =========================================================
+   GENERIC PROPERTY CHOICE
+   ========================================================= */
+
+.property-choice {
+  min-height: 38px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  padding: 6px 8px;
+
+  border: 0;
+
+  border-radius: 8px;
+
+  background: rgba(0, 0, 0, 0.05);
+
+  color: var(--aegis-text);
+
+  cursor: pointer;
+
+  transition:
+    background 0.12s ease,
+    color 0.12s ease;
+}
+
+html[data-theme="dark"] .property-choice {
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.property-choice:hover {
+  background:
+    rgba(108, 99, 255, 0.12);
+}
+
+.property-choice.selected {
+  background: var(--aegis-active);
+  color: var(--aegis-active-text);
+}
+
+/* =========================================================
+   RANGE / SLIDER
+   ========================================================= */
+
+.property-slider,
+.size-range,
+.opacity-range {
+  width: 100%;
+
+  margin-top: 10px;
+
+  accent-color: var(--aegis-purple);
+
+  cursor: pointer;
+}
+
+.opacity-values {
+  display: flex;
+
+  justify-content: space-between;
+
+  margin-top: 4px;
+
+  font-size: 11px;
+
+  color: var(--aegis-muted);
+}
+
+/* =========================================================
+   SIZE VALUE
+   ========================================================= */
+
+.size-value {
+  margin-top: 5px;
+
+  text-align: right;
+
+  color: var(--aegis-muted);
+
+  font-size: 12px;
+}
+
+/* =========================================================
+   BOLD / STYLE
+   ========================================================= */
+
+.style-button {
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.style-button strong {
+  width: 24px;
+
+  font-size: 17px;
+
+  text-align: center;
+}
+
+/* =========================================================
+   BOLD CONTROL
+   ========================================================= */
+
+.bold-control {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  height: 40px;
+
+  padding: 0 12px;
+
+  border: 0;
+  border-radius: 8px;
+
+  background: rgba(0, 0, 0, 0.05);
+
+  color: var(--aegis-text);
+
+  cursor: pointer;
+}
+
+html[data-theme="dark"] .bold-control {
+  background:
+    rgba(255, 255, 255, 0.07);
+}
+
+.bold-control:hover {
+  background:
+    rgba(108, 99, 255, 0.12);
+}
+
+.bold-control.active {
+  background: var(--aegis-active);
+  color: var(--aegis-active-text);
+}
+
+/* =========================================================
+   DELETE
+   ========================================================= */
+
+.delete-property-button,
+.delete-element-button {
+  width: 100%;
+
+  height: 38px;
+
+  border: 0;
+
+  border-radius: 8px;
+
+  background:
+    rgba(220, 38, 38, 0.08);
+
+  color: #dc2626;
+
+  cursor: pointer;
+
+  transition:
+    background 0.12s ease;
+}
+
+.delete-property-button:hover,
+.delete-element-button:hover {
+  background:
+    rgba(220, 38, 38, 0.14);
+}
+
+.danger-section {
+  padding-top: 4px;
+}
+
+/* =========================================================
+   MORE TOOLS MENU
+   ========================================================= */
+
+.more-tools-menu {
+  position: fixed;
+
+  top: 70px;
+
+  left: 50%;
+
+  transform:
+    translateX(
+      calc(-50% + 280px)
+    );
+
+  width: 280px;
+
+  padding: 8px;
+
+  border:
+    1px solid
+    var(--aegis-border);
+
+  border-radius: 10px;
+
+  background:
+    var(--aegis-toolbar-bg);
+
+  box-shadow:
+    0 12px 35px
+    rgba(0, 0, 0, 0.14);
+
+  backdrop-filter: blur(18px);
+
+  -webkit-backdrop-filter:
+    blur(18px);
+
+  z-index: 70;
+}
+
+/* =========================================================
+   MORE TOOL ITEM
+   ========================================================= */
+
+.more-tool-item {
+  width: 100%;
+
+  min-height: 40px;
+
+  display: grid;
+
+  grid-template-columns:
+    24px
+    minmax(0, 1fr)
+    auto;
+
+  align-items: center;
+
+  gap: 9px;
+
+  padding:
+    7px 8px;
+
+  border: 0;
+
+  border-radius: 7px;
+
+  background:
+    transparent;
+
+  color:
+    var(--aegis-text);
+
+  text-align: left;
+
+  cursor: pointer;
+}
+
+.more-tool-item:hover {
+  background:
+    rgba(0, 0, 0, 0.06);
+}
+
+html[data-theme="dark"]
+.more-tool-item:hover {
+  background:
+    rgba(255, 255, 255, 0.08);
+}
+
+.more-tool-icon {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+.more-tool-item kbd {
+  color:
+    var(--aegis-muted);
+
+  font-size: 12px;
+}
+
+.more-menu-separator {
+  height: 1px;
+
+  margin:
+    7px 2px;
+
+  background:
+    var(--aegis-border);
+}
+
+.generate-title {
+  padding:
+    7px 9px 4px;
+
+  font-size: 13px;
+
+  font-weight: 600;
+}
+
+.ai-badge {
+  padding:
+    2px 5px;
+
+  border-radius: 5px;
+
+  background:
+    #6860df;
+
+  color:
+    white;
+
+  font-size: 9px;
+
+  font-weight: 700;
+}
+
+/* =========================================================
+   TEXT EDITOR
+   =========================================================
+
+   This is the live text box that appears when
+   the Text tool is active and the user clicks
+   the canvas.
+   ========================================================= */
+
+.aegis-text-editor {
+  position: fixed;
+
+  z-index: 9999;
+
+  /*
+   * Visible editing area.
+   */
+  width: 320px;
+
+  min-width: 180px;
+
+  height: 90px;
+
+  min-height: 52px;
+
+  max-width: 70vw;
+
+  max-height: 50vh;
+
+  /*
+   * The inline width/height represent the
+   * complete visible text box.
+   */
+  box-sizing: border-box;
+
+  /*
+   * Keep the box exactly at the
+   * coordinates calculated by React.
+   */
+  margin: 0;
+
+  padding:
+    8px 10px;
+
+  /*
+   * Visible rounded editing boundary.
+   */
+  border:
+    1.5px solid
+    var(--aegis-purple);
+
+  border-radius: 9px;
+
+  outline: none;
+
+  /*
+   * Make the editor clearly visible
+   * while typing.
+   */
+  background:
+    #ffffff;
+
+  color:
+    #111111;
+
+  /*
+   * Allow the user to resize the
+   * text box.
+   */
+  resize: both;
+
+  overflow: auto;
+
+  /*
+   * Text appearance.
+   */
+  line-height: 1.2;
+
+  white-space: pre-wrap;
+
+  word-break: break-word;
+
+  /*
+   * Make sure the textarea receives
+   * pointer/keyboard input.
+   */
+  pointer-events: auto;
+
+  user-select: text;
+
+  -webkit-user-select: text;
+
+  /*
+   * Make the caret clearly visible.
+   */
+  caret-color:
+    var(--aegis-purple);
+
+  /*
+   * Small editing shadow.
+   */
+  box-shadow:
+    0 0 0 2px
+    rgba(108, 99, 255, 0.06);
+
+  transition:
+    border-color 0.12s ease,
+    box-shadow 0.12s ease;
+}
+
+/* =========================================================
+   TEXT EDITOR FOCUS
+   ========================================================= */
+
+.aegis-text-editor:focus {
+  border-color:
+    var(--aegis-purple);
+
+  box-shadow:
+    0 0 0 2px
+    rgba(108, 99, 255, 0.12);
+}
+
+/* =========================================================
+   TEXT PLACEHOLDER
+   ========================================================= */
+
+.aegis-text-editor::placeholder {
+  color:
+    #8c8c8c;
+
+  opacity: 1;
+}
+
+/* =========================================================
+   DARK MODE TEXT EDITOR
+   ========================================================= */
+
+html[data-theme="dark"]
+.aegis-text-editor {
+  background:
+    #232326;
+
+  color:
+    #f4f4f5;
+
+  caret-color:
+    #9b94ff;
+}
+
+html[data-theme="dark"]
+.aegis-text-editor::placeholder {
+  color:
+    #9999a3;
+}
+
+/* =========================================================
+   TEXT PROPERTIES PANEL
+   ========================================================= */
+
+.text-properties-panel {
+  z-index: 80;
+}
+
+/* =========================================================
+   TEXT PROPERTY ALIGNMENT
+   ========================================================= */
+
+.text-properties-panel
+.align-grid
+.property-choice {
+  font-size: 20px;
+  line-height: 1;
+}
+
+/* =========================================================
+   SCROLLBARS
+   ========================================================= */
+
+.aegis-menu::-webkit-scrollbar,
+.properties-panel::-webkit-scrollbar,
+.aegis-text-editor::-webkit-scrollbar {
+  width: 7px;
+}
+
+.aegis-menu::-webkit-scrollbar-track,
+.properties-panel::-webkit-scrollbar-track,
+.aegis-text-editor::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.aegis-menu::-webkit-scrollbar-thumb,
+.properties-panel::-webkit-scrollbar-thumb,
+.aegis-text-editor::-webkit-scrollbar-thumb {
+  background:
+    rgba(120, 120, 120, 0.28);
+
+  border-radius: 10px;
+}
+
+.aegis-menu::-webkit-scrollbar-thumb:hover,
+.properties-panel::-webkit-scrollbar-thumb:hover,
+.aegis-text-editor::-webkit-scrollbar-thumb:hover {
+  background:
+    rgba(120, 120, 120, 0.42);
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 800px) {
+  .top-toolbar {
+    max-width:
+      calc(100vw - 110px);
+
+    overflow-x: auto;
+
+    justify-content: flex-start;
+  }
+
+  .top-tool {
+    flex:
+      0 0 38px;
+  }
+
+  .text-toolbar {
+    max-width:
+      calc(100vw - 24px);
+
+    overflow-x: auto;
+  }
+
+  .properties-panel {
+    width: 230px;
+  }
+
+  .more-tools-menu {
+    left: auto;
+    right: 12px;
+
+    transform: none;
+  }
+
+  .aegis-text-editor {
+    width: 280px;
+    max-width: 70vw;
+  }
+}
+/* =====================================================
+   AEGIS TEXT DRAG PREVIEW
+   ===================================================== */
+
+.aegis-text-drag-preview {
+  position: fixed;
+  z-index: 9998;
+
+  box-sizing: border-box;
+
+  border:
+    1.5px dashed
+    var(--aegis-purple, #6c63ff);
+
+  border-radius: 9px;
+
+  background:
+    rgba(108, 99, 255, 0.06);
+
+  box-shadow:
+    0 0 0 1px
+    rgba(108, 99, 255, 0.04);
+
+  pointer-events: none;
+}
+/* =========================================================
+   AEGIS — MORE FONTS MENU
+   ========================================================= */
+
+.more-fonts-button {
+  width: 100%;
+  min-height: 36px;
+  margin-top: 8px;
+  padding: 8px 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+
+  background: rgba(255, 255, 255, 0.045);
+  color: inherit;
+
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.15s ease,
+    border-color 0.15s ease,
+    transform 0.15s ease;
+}
+
+.more-fonts-button:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(108, 99, 255, 0.55);
+}
+
+.more-fonts-button.active {
+  background: rgba(108, 99, 255, 0.14);
+  border-color: rgba(108, 99, 255, 0.65);
+}
+
+.more-fonts-arrow {
+  font-size: 15px;
+  line-height: 1;
+}
+
+.more-fonts-menu {
+  width: 100%;
+  margin-top: 8px;
+
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 10px;
+
+  background: rgba(25, 25, 29, 0.98);
+
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.35),
+    0 2px 8px rgba(0, 0, 0, 0.25);
+
+  overflow: hidden;
+
+  animation: aegis-font-menu-in 0.12s ease-out;
+}
+
+.more-fonts-header {
+  min-height: 38px;
+  padding: 0 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.more-fonts-close {
+  width: 25px;
+  height: 25px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 0;
+  border-radius: 6px;
+
+  background: transparent;
+  color: inherit;
+
+  font-size: 18px;
+  line-height: 1;
+
+  cursor: pointer;
+}
+
+.more-fonts-close:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.more-fonts-scroll {
+  max-height: 290px;
+  padding: 6px;
+
+  overflow-y: auto;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+}
+
+.more-fonts-scroll::-webkit-scrollbar {
+  width: 5px;
+}
+
+.more-fonts-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.more-fonts-scroll::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.more-fonts-scroll .font-choice {
+  min-height: 34px;
+  padding: 6px 8px;
+
+  border-radius: 7px;
+
+  text-align: left;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@keyframes aegis-font-menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================================
+   AEGIS — POLISHED STROKE WIDTH CONTROL
+   ========================================================= */
+
+.size-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 7px;
+}
+
+.size-grid .size-choice {
+  position: relative;
+  min-height: 48px;
+  padding: 7px 5px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+
+  border: 1px solid transparent;
+  border-radius: 10px;
+
+  background: rgba(0, 0, 0, 0.035);
+  color: var(--aegis-text);
+
+  cursor: pointer;
+
+  transition:
+    background 0.16s ease,
+    border-color 0.16s ease,
+    transform 0.16s ease,
+    box-shadow 0.16s ease;
+}
+
+html[data-theme="dark"] .size-grid .size-choice {
+  background: rgba(255, 255, 255, 0.055);
+}
+
+.size-grid .size-choice::before {
+  content: "";
+  display: block;
+  width: 28px;
+  border-radius: 999px;
+  background: currentColor;
+  opacity: 0.86;
+  transition:
+    width 0.16s ease,
+    opacity 0.16s ease,
+    transform 0.16s ease;
+}
+
+.size-grid .size-choice:nth-child(1)::before {
+  height: 2px;
+}
+
+.size-grid .size-choice:nth-child(2)::before {
+  height: 4px;
+}
+
+.size-grid .size-choice:nth-child(3)::before {
+  height: 7px;
+}
+
+.size-grid .size-choice:nth-child(4)::before {
+  height: 10px;
+}
+
+.size-grid .size-choice:hover {
+  background: rgba(108, 99, 255, 0.09);
+  border-color: rgba(108, 99, 255, 0.22);
+  transform: translateY(-1px);
+}
+
+.size-grid .size-choice:hover::before {
+  width: 32px;
+  opacity: 1;
+}
+
+.size-grid .size-choice.selected,
+.size-grid .size-choice.active {
+  background: rgba(108, 99, 255, 0.13);
+  border-color: rgba(108, 99, 255, 0.55);
+  color: var(--aegis-purple);
+  box-shadow: 0 4px 14px rgba(108, 99, 255, 0.10);
+}
+
+html[data-theme="dark"] .size-grid .size-choice.selected,
+html[data-theme="dark"] .size-grid .size-choice.active {
+  background: rgba(108, 99, 255, 0.19);
+  border-color: rgba(148, 140, 255, 0.62);
+  color: #aaa4ff;
+}
+
+.size-grid .size-choice.selected::after,
+.size-grid .size-choice.active::after {
+  content: "";
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+/* Keep the visual size buttons clean even when generic property styles apply. */
+.size-grid .size-choice span,
+.size-grid .size-choice strong {
+  line-height: 1;
+}
+
+/* =========================================================
+   AEGIS — POLISHED SIZE SLIDER
+   ========================================================= */
+
+.size-range {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  height: 22px;
+  margin: 8px 0 0;
+  padding: 0;
+  background: transparent;
+  accent-color: var(--aegis-purple);
+  cursor: pointer;
+}
+
+.size-range:focus {
+  outline: none;
+}
+
+.size-range::-webkit-slider-runnable-track {
+  height: 5px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    rgba(108, 99, 255, 0.78),
+    rgba(108, 99, 255, 0.22)
+  );
+}
+
+.size-range::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  margin-top: -5.5px;
+  border: 3px solid var(--aegis-toolbar-bg);
+  border-radius: 50%;
+  background: var(--aegis-purple);
+  box-shadow:
+    0 0 0 1px rgba(108, 99, 255, 0.35),
+    0 3px 10px rgba(0, 0, 0, 0.16);
+}
+
+.size-range::-moz-range-track {
+  height: 5px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    rgba(108, 99, 255, 0.78),
+    rgba(108, 99, 255, 0.22)
+  );
+}
+
+.size-range::-moz-range-thumb {
+  width: 11px;
+  height: 11px;
+  border: 3px solid var(--aegis-toolbar-bg);
+  border-radius: 50%;
+  background: var(--aegis-purple);
+  box-shadow:
+    0 0 0 1px rgba(108, 99, 255, 0.35),
+    0 3px 10px rgba(0, 0, 0, 0.16);
+}
+
+.size-range:focus-visible::-webkit-slider-thumb {
+  box-shadow:
+    0 0 0 4px rgba(108, 99, 255, 0.18),
+    0 0 0 1px rgba(108, 99, 255, 0.45);
+}
+
+.size-range:focus-visible::-moz-range-thumb {
+  box-shadow:
+    0 0 0 4px rgba(108, 99, 255, 0.18),
+    0 0 0 1px rgba(108, 99, 255, 0.45);
+}
+
+/* =========================================================
+   AEGIS — FONT SELECTOR / MORE FONTS
+   ========================================================= */
+
+.font-grid .font-choice {
+  min-height: 38px;
+  border: 1px solid transparent;
+  border-radius: 9px;
+  transition:
+    background 0.14s ease,
+    border-color 0.14s ease,
+    transform 0.14s ease;
+}
+
+.font-grid .font-choice:hover {
+  border-color: rgba(108, 99, 255, 0.24);
+  transform: translateY(-1px);
+}
+
+.font-grid .font-choice.selected,
+.font-grid .font-choice.active {
+  border-color: rgba(108, 99, 255, 0.58);
+  box-shadow: 0 3px 12px rgba(108, 99, 255, 0.10);
+}
+
+.more-fonts-button,
+.font-more-trigger {
+  position: relative;
+  overflow: hidden;
+}
+
+.more-fonts-button::after,
+.font-more-trigger::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 25%,
+    rgba(255, 255, 255, 0.10) 50%,
+    transparent 75%
+  );
+  transform: translateX(-120%);
+  transition: transform 0.45s ease;
+  pointer-events: none;
+}
+
+.more-fonts-button:hover::after,
+.font-more-trigger:hover::after {
+  transform: translateX(120%);
+}
+
+.font-explorer-menu,
+.more-fonts-menu {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--aegis-border);
+  border-radius: 12px;
+  background: var(--aegis-toolbar-bg);
+  color: var(--aegis-text);
+  box-shadow:
+    0 16px 40px rgba(0, 0, 0, 0.18),
+    0 3px 10px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+html[data-theme="dark"] .font-explorer-menu,
+html[data-theme="dark"] .more-fonts-menu {
+  background: rgba(28, 28, 32, 0.98);
+  border-color: rgba(255, 255, 255, 0.10);
+}
+
+.font-explorer-header,
+.more-fonts-header {
+  min-height: 40px;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--aegis-border);
+  color: var(--aegis-text);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.font-explorer-close,
+.more-fonts-close {
+  width: 26px;
+  height: 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--aegis-muted);
+  cursor: pointer;
+  transition:
+    background 0.12s ease,
+    color 0.12s ease;
+}
+
+.font-explorer-close:hover,
+.more-fonts-close:hover {
+  background: rgba(108, 99, 255, 0.12);
+  color: var(--aegis-text);
+}
+
+.font-explorer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  padding: 7px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.font-explorer-grid::-webkit-scrollbar,
+.more-fonts-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.font-explorer-grid::-webkit-scrollbar-track,
+.more-fonts-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.font-explorer-grid::-webkit-scrollbar-thumb,
+.more-fonts-scroll::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(120, 120, 120, 0.28);
+}
+
+.font-explorer-choice,
+.more-fonts-scroll .font-choice {
+  min-height: 36px;
+  padding: 7px 9px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.035);
+  color: var(--aegis-text);
+  font-size: 12px;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  transition:
+    background 0.13s ease,
+    border-color 0.13s ease,
+    transform 0.13s ease;
+}
+
+html[data-theme="dark"] .font-explorer-choice,
+html[data-theme="dark"] .more-fonts-scroll .font-choice {
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.font-explorer-choice:hover,
+.more-fonts-scroll .font-choice:hover {
+  background: rgba(108, 99, 255, 0.10);
+  border-color: rgba(108, 99, 255, 0.28);
+  transform: translateY(-1px);
+}
+
+.font-explorer-choice.selected,
+.font-explorer-choice.active,
+.more-fonts-scroll .font-choice.selected,
+.more-fonts-scroll .font-choice.active {
+  background: rgba(108, 99, 255, 0.14);
+  border-color: rgba(108, 99, 255, 0.55);
+  color: var(--aegis-purple);
+}
+
+@media (max-width: 800px) {
+  .size-grid .size-choice {
+    min-height: 44px;
+  }
+
+  .font-explorer-grid,
+  .more-fonts-scroll {
+    grid-template-columns: 1fr;
+  }
+}
+/* =========================================================
+   AEGIS TEXT FONT FAMILY
+   ========================================================= */
+
+.font-choice {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 1px solid transparent;
+  background: #2b2b2f;
+  color: #f4f4f5;
+  border-radius: 10px;
+  min-height: 44px;
+  padding: 0 14px;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    background 160ms ease,
+    border-color 160ms ease,
+    transform 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.font-choice:hover {
+  background: #343439;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.font-choice:active {
+  transform: scale(0.98);
+}
+
+.font-choice.active,
+.font-choice.selected {
+  background: #292936;
+  border-color: #6d5dfc;
+  box-shadow:
+    0 0 0 1px rgba(109, 93, 252, 0.18),
+    inset 0 0 0 1px rgba(109, 93, 252, 0.08);
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   MORE FONTS BUTTON
+   ========================================================= */
+
+.font-more-trigger {
+  appearance: none;
+  -webkit-appearance: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 100%;
+  min-height: 42px;
+
+  padding: 0 14px;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+
+  background: #2b2b2f;
+  color: #f1f1f3;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 160ms ease,
+    border-color 160ms ease,
+    transform 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.font-more-trigger:hover {
+  background: #343439;
+  border-color: rgba(109, 93, 252, 0.45);
+}
+
+.font-more-trigger:active {
+  transform: scale(0.985);
+}
+
+.font-more-trigger.open {
+  border-color: #6d5dfc;
+  box-shadow: 0 0 0 1px rgba(109, 93, 252, 0.12);
+}
+
+
+/* =========================================================
+   MORE FONTS EXPLORER
+   ========================================================= */
+
+.font-explorer-menu {
+  width: 100%;
+  margin-top: 8px;
+
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 12px;
+
+  background: #242428;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 14px 35px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.025);
+
+  animation: aegisFontMenuIn 150ms ease-out;
+}
+
+@keyframes aegisFontMenuIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* =========================================================
+   EXPLORER HEADER
+   ========================================================= */
+
+.font-explorer-header {
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 12px;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+  background: #27272b;
+}
+
+.font-explorer-header span {
+  color: #f1f1f3;
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.font-explorer-close {
+  appearance: none;
+  -webkit-appearance: none;
+
+  width: 28px;
+  height: 28px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 0;
+  border-radius: 7px;
+
+  background: transparent;
+  color: #a7a7ad;
+
+  font-size: 16px;
+
+  cursor: pointer;
+
+  transition:
+    background 150ms ease,
+    color 150ms ease;
+}
+
+.font-explorer-close:hover {
+  background: #35353a;
+  color: #ffffff;
+}
+
+
+/* =========================================================
+   FONT LIST
+   ========================================================= */
+
+.font-explorer-list {
+  max-height: 280px;
+
+  padding: 9px;
+
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 7px;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  scrollbar-width: thin;
+  scrollbar-color: #4b4b52 transparent;
+}
+
+.font-explorer-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.font-explorer-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.font-explorer-list::-webkit-scrollbar-thumb {
+  background: #48484e;
+  border-radius: 10px;
+}
+
+.font-explorer-list::-webkit-scrollbar-thumb:hover {
+  background: #5a5a63;
+}
+
+
+/* =========================================================
+   INDIVIDUAL FONT
+   ========================================================= */
+
+.font-explorer-choice {
+  appearance: none;
+  -webkit-appearance: none;
+
+  width: 100%;
+  min-width: 0;
+  min-height: 42px;
+
+  padding: 0 11px;
+
+  display: flex;
+  align-items: center;
+
+  border: 1px solid transparent;
+  border-radius: 9px;
+
+  background: #2d2d31;
+  color: #eeeeef;
+
+  font-size: 15px;
+  font-weight: 500;
+
+  text-align: left;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  cursor: pointer;
+
+  transition:
+    background 150ms ease,
+    border-color 150ms ease,
+    color 150ms ease,
+    transform 150ms ease,
+    box-shadow 150ms ease;
+}
+
+.font-explorer-choice:hover {
+  background: #36363b;
+  border-color: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+}
+
+.font-explorer-choice:active {
+  transform: scale(0.975);
+}
+
+.font-explorer-choice.active,
+.font-explorer-choice.selected {
+  background: #292936;
+  border-color: #6d5dfc;
+
+  color: #ffffff;
+
+  box-shadow:
+    0 0 0 1px rgba(109, 93, 252, 0.15),
+    inset 0 0 12px rgba(109, 93, 252, 0.035);
+}
+
+
+/* =========================================================
+   FONT PREVIEW
+   The actual font should be supplied by the component's
+   inline fontFamily style.
+   ========================================================= */
+
+.font-explorer-choice span,
+.font-explorer-choice .font-preview {
+  display: block;
+
+  min-width: 0;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+
+  line-height: 1;
+}
+
+
+/* =========================================================
+   PRIMARY FONT GRID
+   ========================================================= */
+
+.font-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.font-grid .font-choice {
+  width: 100%;
+}
+
+
+/* =========================================================
+   FONT FAMILY SECTION SPACING
+   ========================================================= */
+
+.font-family-section {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+
+/* =========================================================
+   SMALLER SCREENS
+   ========================================================= */
+
+@media (max-width: 420px) {
+  .font-explorer-list {
+    grid-template-columns: 1fr;
+  }
+
+  .font-explorer-choice {
+    min-height: 40px;
+  }
+}
+/* =========================================================
+   PDF PAGE PICKER
+   ========================================================= */
+
+.pdf-picker-backdrop {
+  position: fixed;
+
+  inset: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background: rgba(
+    0,
+    0,
+    0,
+    0.32
+  );
+
+  backdrop-filter: blur(5px);
+
+  -webkit-backdrop-filter: blur(5px);
+
+  z-index: 300;
+}
+
+.pdf-picker {
+  width: 390px;
+
+  max-width: calc(
+    100vw - 32px
+  );
+
+  background:
+    var(--aegis-toolbar-bg);
+
+  color:
+    var(--aegis-text);
+
+  border:
+    1px solid
+    var(--aegis-border);
+
+  border-radius: 16px;
+
+  box-shadow:
+    0 20px 60px
+    rgba(
+      0,
+      0,
+      0,
+      0.2
+    );
+
+  backdrop-filter: blur(20px);
+
+  -webkit-backdrop-filter: blur(20px);
+
+  overflow: hidden;
+}
+
+.pdf-picker-header {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 16px;
+
+  padding: 18px 18px 14px;
+
+  border-bottom:
+    1px solid
+    var(--aegis-border);
+}
+
+.pdf-picker-title {
+  font-size: 16px;
+
+  font-weight: 700;
+}
+
+.pdf-picker-name {
+  margin-top: 4px;
+
+  max-width: 300px;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+
+  color:
+    var(--aegis-muted);
+
+  font-size: 12px;
+}
+
+.pdf-picker-close {
+  width: 32px;
+
+  height: 32px;
+
+  border: 0;
+
+  border-radius: 8px;
+
+  background:
+    transparent;
+
+  color:
+    var(--aegis-muted);
+
+  font-size: 24px;
+
+  line-height: 1;
+
+  cursor: pointer;
+}
+
+.pdf-picker-close:hover {
+  background:
+    rgba(
+      127,
+      127,
+      127,
+      0.12
+    );
+
+  color:
+    var(--aegis-text);
+}
+
+.pdf-picker-content {
+  padding: 20px;
+}
+
+.pdf-picker-count {
+  margin-bottom: 18px;
+
+  color:
+    var(--aegis-muted);
+
+  font-size: 13px;
+}
+
+.pdf-picker-label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  font-size: 13px;
+
+  font-weight: 600;
+}
+
+.pdf-picker-page-row {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+}
+
+.pdf-picker-page-row input {
+  flex: 1;
+
+  min-width: 0;
+
+  height: 42px;
+
+  padding: 0 12px;
+
+  border:
+    1px solid
+    var(--aegis-border);
+
+  border-radius: 9px;
+
+  outline: none;
+
+  background:
+    var(--aegis-canvas-bg);
+
+  color:
+    var(--aegis-text);
+
+  text-align: center;
+
+  font-size: 16px;
+
+  font-weight: 600;
+}
+
+.pdf-picker-page-row input:focus {
+  border-color:
+    var(--aegis-purple);
+}
+
+.pdf-picker-arrow {
+  width: 42px;
+
+  height: 42px;
+
+  border:
+    1px solid
+    var(--aegis-border);
+
+  border-radius: 9px;
+
+  background:
+    var(--aegis-canvas-bg);
+
+  color:
+    var(--aegis-text);
+
+  font-size: 20px;
+
+  cursor: pointer;
+}
+
+.pdf-picker-arrow:hover:not(
+  :disabled
+) {
+  background:
+    var(--aegis-active);
+}
+
+.pdf-picker-arrow:disabled {
+  opacity: 0.4;
+
+  cursor: default;
+}
+
+.pdf-picker-hint {
+  margin-top: 14px;
+
+  color:
+    var(--aegis-muted);
+
+  font-size: 12px;
+
+  line-height: 1.5;
+}
+
+.pdf-picker-add {
+  width: 100%;
+
+  height: 44px;
+
+  margin-top: 18px;
+
+  border: 0;
+
+  border-radius: 9px;
+
+  background:
+    var(--aegis-purple);
+
+  color: white;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.pdf-picker-add:hover:not(
+  :disabled
+) {
+  filter: brightness(
+    1.05
+  );
+}
+
+.pdf-picker-add:disabled {
+  opacity: 0.55;
+
+  cursor: default;
+}
+/* =========================================================
+   AEGIS AUTHENTICATION UI
+   ========================================================= */
+
+.aegis-auth-area {
+  position: fixed;
+
+  top: 18px;
+  right: 24px;
+
+  z-index: 300;
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+}
+
+
+/* =========================================================
+   LOGIN / SIGN UP BUTTONS
+   ========================================================= */
+
+.aegis-auth-button {
+  height: 40px;
+
+  padding: 0 18px;
+
+  border: 1px solid
+    var(--aegis-border);
+
+  border-radius: 10px;
+
+  background:
+    rgba(255, 255, 255, 0.82);
+
+  color:
+    var(--aegis-text);
+
+  cursor: pointer;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  transition:
+    transform 160ms ease,
+    background 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.aegis-auth-button:hover {
+  transform:
+    translateY(-1px);
+
+  box-shadow:
+    0 5px 18px
+    rgba(0, 0, 0, 0.08);
+}
+
+.aegis-auth-button.secondary:hover {
+  background:
+    rgba(245, 245, 247, 0.95);
+
+  border-color:
+    #cfcfd5;
+}
+
+.aegis-auth-button.primary {
+  background:
+    #202124;
+
+  border-color:
+    #202124;
+
+  color:
+    #ffffff;
+}
+
+.aegis-auth-button.primary:hover {
+  background:
+    #303136;
+
+  border-color:
+    #303136;
+}
+
+
+/* =========================================================
+   DARK THEME AUTH BUTTONS
+   ========================================================= */
+
+html[data-theme="dark"]
+.aegis-auth-button {
+  background:
+    rgba(35, 35, 38, 0.94);
+
+  border-color:
+    var(--aegis-border);
+
+  color:
+    var(--aegis-text);
+}
+
+html[data-theme="dark"]
+.aegis-auth-button.primary {
+  background:
+    #f4f4f5;
+
+  border-color:
+    #f4f4f5;
+
+  color:
+    #18181b;
+}
+
+
+/* =========================================================
+   PROFILE BUTTON
+   ========================================================= */
+
+.aegis-profile-wrapper {
+  position: relative;
+}
+
+.aegis-profile-button {
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  height: 42px;
+
+  padding:
+    4px 11px 4px 5px;
+
+  border:
+    1px solid
+    var(--aegis-border);
+
+  border-radius: 22px;
+
+  background:
+    var(--aegis-toolbar-bg);
+
+  color:
+    var(--aegis-text);
+
+  box-shadow:
+    0 5px 18px
+    rgba(0, 0, 0, 0.06);
+
+  cursor: pointer;
+
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease,
+    border-color 160ms ease;
+}
+
+.aegis-profile-button:hover {
+  transform:
+    translateY(-1px);
+
+  box-shadow:
+    0 8px 24px
+    rgba(0, 0, 0, 0.1);
+
+  border-color:
+    rgba(108, 99, 255, 0.45);
+}
+
+.aegis-profile-avatar {
+  width: 32px;
+  height: 32px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background:
+    var(--aegis-active);
+
+  color:
+    var(--aegis-active-text);
+
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.aegis-profile-avatar.large {
+  width: 42px;
+  height: 42px;
+
+  flex-shrink: 0;
+}
+
+.aegis-profile-name {
+  max-width: 130px;
+
+  overflow: hidden;
+
+  white-space: nowrap;
+
+  text-overflow: ellipsis;
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.aegis-profile-chevron {
+  font-size: 13px;
+
+  color:
+    var(--aegis-muted);
+}
+
+
+/* =========================================================
+   PROFILE DROPDOWN
+   ========================================================= */
+
+.aegis-profile-menu {
+  position: absolute;
+
+  top: 50px;
+  right: 0;
+
+  width: 270px;
+
+  padding: 9px;
+
+  border:
+    1px solid
+    var(--aegis-border);
+
+  border-radius: 14px;
+
+  background:
+    var(--aegis-toolbar-bg);
+
+  box-shadow:
+    0 16px 45px
+    rgba(0, 0, 0, 0.13);
+
+  backdrop-filter:
+    blur(18px);
+}
+
+.aegis-profile-header {
+  display: flex;
+  align-items: center;
+
+  gap: 11px;
+
+  padding: 10px;
+
+  margin-bottom: 5px;
+}
+
+.aegis-profile-header div {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+.aegis-profile-header strong {
+  color:
+    var(--aegis-text);
+
+  font-size: 14px;
+}
+
+.aegis-profile-header span {
+  overflow: hidden;
+
+  white-space: nowrap;
+
+  text-overflow: ellipsis;
+
+  color:
+    var(--aegis-muted);
+
+  font-size: 12px;
+}
+
+.aegis-profile-role {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding:
+    8px 10px;
+
+  margin-bottom: 5px;
+
+  border-radius: 9px;
+
+  background:
+    rgba(108, 99, 255, 0.07);
+
+  font-size: 12px;
+}
+
+.aegis-profile-role span {
+  color:
+    var(--aegis-muted);
+}
+
+.aegis-profile-role strong {
+  color:
+    var(--aegis-active-text);
+}
+
+.aegis-profile-menu-item {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  min-height: 40px;
+
+  padding:
+    0 10px;
+
+  border: 0;
+
+  border-radius: 9px;
+
+  background:
+    transparent;
+
+  color:
+    var(--aegis-text);
+
+  cursor: pointer;
+
+  text-align: left;
+
+  font-size: 13px;
+
+  transition:
+    background 150ms ease,
+    transform 150ms ease;
+}
+
+.aegis-profile-menu-item:hover {
+  background:
+    rgba(108, 99, 255, 0.08);
+
+  transform:
+    translateX(2px);
+}
+
+.aegis-profile-menu-item.danger {
+  color:
+    #c62828;
+}
+
+.aegis-profile-menu-item.danger:hover {
+  background:
+    rgba(198, 40, 40, 0.07);
+}
+
+.aegis-profile-divider {
+  height: 1px;
+
+  margin:
+    7px 4px;
+
+  background:
+    var(--aegis-border);
+}
+
+
+/* =========================================================
+   AUTH OVERLAY
+   ========================================================= */
+
+.aegis-auth-overlay {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 24px;
+
+  background:
+    rgba(10, 10, 14, 0.34);
+
+  backdrop-filter:
+    blur(7px);
+}
+
+
+/* =========================================================
+   AUTH MODAL
+   ========================================================= */
+
+.aegis-auth-modal {
+  position: relative;
+
+  width: min(
+    430px,
+    calc(100vw - 32px)
+  );
+
+  max-height:
+    calc(100vh - 48px);
+
+  overflow-y: auto;
+
+  padding: 30px;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.55);
+
+  border-radius: 22px;
+
+  background:
+    rgba(255, 255, 255, 0.96);
+
+  box-shadow:
+    0 28px 80px
+    rgba(0, 0, 0, 0.2);
+}
+
+html[data-theme="dark"]
+.aegis-auth-modal {
+  background:
+    rgba(31, 31, 35, 0.97);
+
+  border-color:
+    rgba(255, 255, 255, 0.1);
+}
+
+.aegis-auth-close {
+  position: absolute;
+
+  top: 14px;
+  right: 15px;
+
+  width: 34px;
+  height: 34px;
+
+  border: 0;
+
+  border-radius: 50%;
+
+  background:
+    transparent;
+
+  color:
+    var(--aegis-muted);
+
+  cursor: pointer;
+
+  font-size: 25px;
+  line-height: 1;
+
+  transition:
+    background 150ms ease,
+    color 150ms ease;
+}
+
+.aegis-auth-close:hover {
+  background:
+    rgba(120, 120, 120, 0.1);
+
+  color:
+    var(--aegis-text);
+}
+
+
+/* =========================================================
+   AUTH BRAND
+   ========================================================= */
+
+.aegis-auth-brand {
+  display: flex;
+  align-items: center;
+
+  gap: 11px;
+
+  margin-bottom: 26px;
+}
+
+.aegis-auth-logo {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
+
+  background:
+    #202124;
+
+  color:
+    #ffffff;
+
+  font-size: 20px;
+  font-weight: 800;
+
+  box-shadow:
+    0 8px 20px
+    rgba(0, 0, 0, 0.14);
+}
+
+.aegis-auth-brand div:last-child {
+  display: flex;
+  flex-direction: column;
+
+  gap: 2px;
+}
+
+.aegis-auth-brand strong {
+  font-size: 17px;
+}
+
+.aegis-auth-brand span {
+  color:
+    var(--aegis-muted);
+
+  font-size: 11px;
+}
+
+
+/* =========================================================
+   AUTH HEADING
+   ========================================================= */
+
+.aegis-auth-heading {
+  margin-bottom: 23px;
+}
+
+.aegis-auth-heading h2 {
+  margin:
+    0 0 7px;
+
+  color:
+    var(--aegis-text);
+
+  font-size: 25px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.aegis-auth-heading p {
+  margin: 0;
+
+  color:
+    var(--aegis-muted);
+
+  font-size: 13px;
+
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   AUTH FORM
+   ========================================================= */
+
+.aegis-auth-field {
+  display: flex;
+  flex-direction: column;
+
+  gap: 7px;
+
+  margin-bottom: 15px;
+}
+
+.aegis-auth-field span {
+  color:
+    var(--aegis-text);
+
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.aegis-auth-field input {
+  width: 100%;
+
+  height: 45px;
+
+  padding:
+    0 13px;
+
+  border:
+    1px solid
+    var(--aegis-border);
+
+  border-radius: 10px;
+
+  outline: none;
+
+  background:
+    var(--aegis-canvas-bg);
+
+  color:
+    var(--aegis-text);
+
+  font-size: 14px;
+
+  transition:
+    border-color 150ms ease,
+    box-shadow 150ms ease;
+}
+
+.aegis-auth-field input:focus {
+  border-color:
+    var(--aegis-purple);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(108, 99, 255, 0.12);
+}
+
+.aegis-auth-field input::placeholder {
+  color:
+    var(--aegis-muted);
+}
+
+
+/* =========================================================
+   ADMIN NOTICE
+   ========================================================= */
+
+.aegis-admin-notice {
+  display: flex;
+  flex-direction: column;
+
+  gap: 3px;
+
+  margin:
+    5px 0 15px;
+
+  padding:
+    11px 12px;
+
+  border:
+    1px solid
+    rgba(108, 99, 255, 0.18);
+
+  border-radius: 10px;
+
+  background:
+    rgba(108, 99, 255, 0.07);
+}
+
+.aegis-admin-notice strong {
+  color:
+    var(--aegis-active-text);
+
+  font-size: 12px;
+}
+
+.aegis-admin-notice span {
+  color:
+    var(--aegis-muted);
+
+  font-size: 11px;
+
+  line-height: 1.4;
+}
+
+
+/* =========================================================
+   AUTH ERROR
+   ========================================================= */
+
+.aegis-auth-error {
+  margin:
+    3px 0 13px;
+
+  padding:
+    10px 11px;
+
+  border:
+    1px solid
+    rgba(198, 40, 40, 0.18);
+
+  border-radius: 9px;
+
+  background:
+    rgba(198, 40, 40, 0.06);
+
+  color:
+    #b3261e;
+
+  font-size: 12px;
+
+  line-height: 1.4;
+}
+
+
+/* =========================================================
+   AUTH SUBMIT
+   ========================================================= */
+
+.aegis-auth-submit {
+  width: 100%;
+
+  height: 46px;
+
+  margin-top: 3px;
+
+  border: 0;
+
+  border-radius: 11px;
+
+  background:
+    #202124;
+
+  color:
+    #ffffff;
+
+  cursor: pointer;
+
+  font-size: 14px;
+  font-weight: 650;
+
+  transition:
+    transform 150ms ease,
+    background 150ms ease,
+    box-shadow 150ms ease;
+}
+
+.aegis-auth-submit:hover:not(:disabled) {
+  transform:
+    translateY(-1px);
+
+  background:
+    #303136;
+
+  box-shadow:
+    0 8px 20px
+    rgba(0, 0, 0, 0.12);
+}
+
+.aegis-auth-submit:disabled {
+  opacity: 0.55;
+
+  cursor: not-allowed;
+}
+
+
+/* =========================================================
+   AUTH SWITCH
+   ========================================================= */
+
+.aegis-auth-switch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 5px;
+
+  margin-top: 18px;
+
+  color:
+    var(--aegis-muted);
+
+  font-size: 12px;
+}
+
+.aegis-auth-switch button {
+  padding: 0;
+
+  border: 0;
+
+  background:
+    transparent;
+
+  color:
+    var(--aegis-active-text);
+
+  cursor: pointer;
+
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.aegis-auth-switch button:hover {
+  text-decoration:
+    underline;
+}
+
+
+/* =========================================================
+   RESPONSIVE AUTH
+   ========================================================= */
+
+@media (max-width: 700px) {
+  .aegis-auth-area {
+    top: 14px;
+    right: 14px;
+  }
+
+  .aegis-profile-name {
+    display: none;
+  }
+
+  .aegis-auth-button {
+    padding:
+      0 13px;
+  }
+
+  .aegis-auth-modal {
+    padding: 24px;
+  }
+}
+/* =========================================================
+   AEGIS — EMPLOYEE MANAGEMENT
+   ========================================================= */
+
+.aegis-overlay {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 1100;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 28px;
+
+  background:
+    rgba(10, 10, 14, 0.42);
+
+  backdrop-filter:
+    blur(10px);
+
+  -webkit-backdrop-filter:
+    blur(10px);
+
+  animation:
+    aegis-employee-overlay-in
+    160ms ease-out;
+}
+
+
+/* =========================================================
+   EMPLOYEE MODAL
+   ========================================================= */
+
+.aegis-employee-modal {
+  position: relative;
+
+  width: min(
+    920px,
+    calc(100vw - 40px)
+  );
+
+  max-height:
+    calc(100vh - 56px);
+
+  display: flex;
+
+  flex-direction: column;
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    var(--aegis-border);
+
+  border-radius: 20px;
+
+  background:
+    var(--aegis-toolbar-bg);
+
+  color:
+    var(--aegis-text);
+
+  box-shadow:
+    0 28px 80px
+    rgba(0, 0, 0, 0.20);
+
+  backdrop-filter:
+    blur(22px);
+
+  -webkit-backdrop-filter:
+    blur(22px);
+
+  animation:
+    aegis-employee-modal-in
+    180ms ease-out;
+}
+
+
+/* =========================================================
+   EMPLOYEE HEADER
+   ========================================================= */
+
+.aegis-employee-header {
+  min-height: 78px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding:
+    18px 22px;
+
+  border-bottom:
+    1px solid
+    var(--aegis-border);
+}
+
+
+.aegis-employee-title {
+  font-size: 17px;
+
+  font-weight: 700;
+
+  letter-spacing:
+    -0.01em;
+}
+
+
+.aegis-employee-subtitle {
+  margin-top: 4px;
+
+  color:
+    var(--aegis-muted);
+
+  font-size: 12px;
+
+  line-height: 1.4;
+}
+
+
+.aegis-employee-close {
+  width: 34px;
+  height: 34px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  border: 0;
+
+  border-radius: 9px;
+
+  background:
+    transparent;
+
+  color:
+    var(--aegis-muted);
+
+  font-size: 22px;
+
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    background 140ms ease,
+    color 140ms ease,
+    transform 140ms ease;
+}
+
+
+.aegis-employee-close:hover {
+  background:
+    rgba(108, 99, 255, 0.10);
+
+  color:
+    var(--aegis-text);
+
+  transform:
+    scale(1.04);
+}
+
+
+.aegis-employee-close:active {
+  transform:
+    scale(0.94);
+}
+
+
+/* =========================================================
+   EMPLOYEE CONTENT
+   ========================================================= */
+
+.aegis-employee-content {
+  min-height: 0;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.35fr)
+    minmax(280px, 0.75fr);
+
+  gap: 0;
+
+  overflow: auto;
+}
+
+
+/* =========================================================
+   EMPLOYEE SECTIONS
+   ========================================================= */
+
+.aegis-employee-list-section,
+.aegis-employee-create-section {
+  min-width: 0;
+
+  padding: 22px;
+}
+
+
+.aegis-employee-list-section {
+  border-right:
+    1px solid
+    var(--aegis-border);
+}
+
+
+.aegis-employee-create-section {
+  background:
+    rgba(108, 99, 255, 0.025);
+}
+
+
+.aegis-employee-section-title {
+  margin-bottom: 14px;
+
+  color:
+    var(--aegis-text);
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  letter-spacing:
+    0.04em;
+
+  text-transform:
+    uppercase;
+}
+
+
+/* =========================================================
+   EMPLOYEE LIST
+   ========================================================= */
+
+.aegis-employee-list {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 7px;
+
+  max-height:
+    430px;
+
+  overflow-y: auto;
+
+  padding-right: 3px;
+}
+
+
+.aegis-employee-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+
+.aegis-employee-list::-webkit-scrollbar-track {
+  background:
+    transparent;
+}
+
+
+.aegis-employee-list::-webkit-scrollbar-thumb {
+  background:
+    rgba(120, 120, 120, 0.28);
+
+  border-radius:
+    999px;
+}
+
+
+.aegis-employee-list::-webkit-scrollbar-thumb:hover {
+  background:
+    rgba(120, 120, 120, 0.42);
+}
+
+
+/* =========================================================
+   EMPLOYEE ROW
+   ========================================================= */
+
+.aegis-employee-row {
+  min-height: 66px;
+
+  display: grid;
+
+  grid-template-columns:
+    58px
+    minmax(0, 1fr)
+    auto;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding:
+    9px 11px;
+
+  border:
+    1px solid
+    transparent;
+
+  border-radius: 11px;
+
+  background:
+    rgba(0, 0, 0, 0.025);
+
+  transition:
+    background 140ms ease,
+    border-color 140ms ease,
+    transform 140ms ease;
+}
+
+
+.aegis-employee-row:hover {
+  background:
+    rgba(108, 99, 255, 0.055);
+
+  border-color:
+    rgba(108, 99, 255, 0.14);
+
+  transform:
+    translateY(-1px);
+}
+
+
+html[data-theme="dark"]
+.aegis-employee-row {
+  background:
+    rgba(255, 255, 255, 0.035);
+}
+
+
+html[data-theme="dark"]
+.aegis-employee-row:hover {
+  background:
+    rgba(108, 99, 255, 0.10);
+
+  border-color:
+    rgba(148, 140, 255, 0.18);
+}
+
+
+/* =========================================================
+   EMPLOYEE CODE
+   ========================================================= */
+
+.aegis-employee-code {
+  min-width: 48px;
+
+  height: 34px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding:
+    0 7px;
+
+  border:
+    1px solid
+    rgba(108, 99, 255, 0.22);
+
+  border-radius: 8px;
+
+  background:
+    rgba(108, 99, 255, 0.09);
+
+  color:
+    var(--aegis-active-text);
+
+  font-size: 11px;
+
+  font-weight: 750;
+
+  letter-spacing:
+    0.04em;
+}
+
+
+/* =========================================================
+   EMPLOYEE INFORMATION
+   ========================================================= */
+
+.aegis-employee-info {
+  min-width: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+
+.aegis-employee-name {
+  overflow: hidden;
+
+  white-space: nowrap;
+
+  text-overflow: ellipsis;
+
+  color:
+    var(--aegis-text);
+
+  font-size: 13px;
+
+  font-weight: 650;
+}
+
+
+.aegis-employee-email {
+  overflow: hidden;
+
+  white-space: nowrap;
+
+  text-overflow: ellipsis;
+
+  color:
+    var(--aegis-muted);
+
+  font-size: 11px;
+}
+
+
+/* =========================================================
+   EMPLOYEE STATUS
+   ========================================================= */
+
+.aegis-employee-status {
+  min-width: 60px;
+
+  padding:
+    5px 8px;
+
+  border:
+    1px solid
+    rgba(198, 40, 40, 0.16);
+
+  border-radius: 999px;
+
+  background:
+    rgba(198, 40, 40, 0.06);
+
+  color:
+    #b3261e;
+
+  font-size: 10px;
+
+  font-weight: 650;
+
+  text-align: center;
+}
+
+
+.aegis-employee-status.active {
+  border-color:
+    rgba(34, 128, 72, 0.18);
+
+  background:
+    rgba(34, 128, 72, 0.08);
+
+  color:
+    #247a45;
+}
+
+
+html[data-theme="dark"]
+.aegis-employee-status.active {
+  color:
+    #75d89a;
+}
+
+
+/* =========================================================
+   EMPTY / LOADING STATE
+   ========================================================= */
+
+.aegis-employee-empty {
+  min-height: 120px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  border:
+    1px dashed
+    var(--aegis-border);
+
+  border-radius: 12px;
+
+  color:
+    var(--aegis-muted);
+
+  font-size: 12px;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   EMPLOYEE CREATE FORM
+   ========================================================= */
+
+.aegis-employee-form {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 13px;
+}
+
+
+.aegis-employee-form label {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 6px;
+
+  color:
+    var(--aegis-muted);
+
+  font-size: 11px;
+
+  font-weight: 600;
+}
+
+
+.aegis-employee-form input {
+  width: 100%;
+
+  height: 42px;
+
+  padding:
+    0 11px;
+
+  border:
+    1px solid
+    var(--aegis-border);
+
+  border-radius: 9px;
+
+  outline: none;
+
+  background:
+    var(--aegis-canvas-bg);
+
+  color:
+    var(--aegis-text);
+
+  font-size: 13px;
+
+  transition:
+    border-color 140ms ease,
+    box-shadow 140ms ease,
+    background 140ms ease;
+}
+
+
+.aegis-employee-form input::placeholder {
+  color:
+    var(--aegis-muted);
+
+  opacity: 0.75;
+}
+
+
+.aegis-employee-form input:hover {
+  border-color:
+    rgba(108, 99, 255, 0.28);
+}
+
+
+.aegis-employee-form input:focus {
+  border-color:
+    var(--aegis-purple);
+
+  box-shadow:
+    0 0 0 3px
+    rgba(108, 99, 255, 0.11);
+}
+
+
+.aegis-employee-form input:disabled {
+  opacity: 0.55;
+
+  cursor: not-allowed;
+}
+
+
+/* =========================================================
+   EMPLOYEE SUCCESS MESSAGE
+   ========================================================= */
+
+.aegis-employee-success {
+  padding:
+    10px 11px;
+
+  border:
+    1px solid
+    rgba(34, 128, 72, 0.18);
+
+  border-radius: 9px;
+
+  background:
+    rgba(34, 128, 72, 0.07);
+
+  color:
+    #247a45;
+
+  font-size: 11px;
+
+  line-height: 1.4;
+}
+
+
+html[data-theme="dark"]
+.aegis-employee-success {
+  border-color:
+    rgba(117, 216, 154, 0.18);
+
+  background:
+    rgba(117, 216, 154, 0.08);
+
+  color:
+    #75d89a;
+}
+
+
+/* =========================================================
+   EMPLOYEE CREATE BUTTON
+   ========================================================= */
+
+.aegis-employee-form
+.aegis-login-button {
+  margin-top: 3px;
+}
+
+
+.aegis-employee-form
+.aegis-login-button:disabled {
+  opacity: 0.55;
+
+  cursor: not-allowed;
+}
+
+
+/* =========================================================
+   EMPLOYEE ANIMATIONS
+   ========================================================= */
+
+@keyframes aegis-employee-overlay-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+
+@keyframes aegis-employee-modal-in {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(8px)
+      scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+}
+
+
+/* =========================================================
+   EMPLOYEE MANAGEMENT — DARK THEME
+   ========================================================= */
+
+html[data-theme="dark"]
+.aegis-employee-modal {
+  background:
+    rgba(35, 35, 38, 0.97);
+
+  border-color:
+    rgba(255, 255, 255, 0.09);
+
+  box-shadow:
+    0 30px 90px
+    rgba(0, 0, 0, 0.48);
+}
+
+
+html[data-theme="dark"]
+.aegis-employee-create-section {
+  background:
+    rgba(108, 99, 255, 0.045);
+}
+
+
+/* =========================================================
+   EMPLOYEE MANAGEMENT — RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 760px) {
+  .aegis-overlay {
+    padding:
+      14px;
+  }
+
+  .aegis-employee-modal {
+    width:
+      calc(100vw - 28px);
+
+    max-height:
+      calc(100vh - 28px);
+
+    border-radius:
+      16px;
+  }
+
+  .aegis-employee-content {
+    grid-template-columns:
+      1fr;
+  }
+
+  .aegis-employee-list-section {
+    border-right:
+      0;
+
+    border-bottom:
+      1px solid
+      var(--aegis-border);
+  }
+
+  .aegis-employee-list {
+    max-height:
+      280px;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .aegis-employee-header {
+    padding:
+      16px;
+  }
+
+  .aegis-employee-list-section,
+  .aegis-employee-create-section {
+    padding:
+      16px;
+  }
+
+  .aegis-employee-row {
+    grid-template-columns:
+      50px
+      minmax(0, 1fr);
+
+    gap: 9px;
+  }
+
+  .aegis-employee-status {
+    grid-column:
+      2;
+
+    justify-self:
+      start;
+  }
+}
+/* =========================================
+   AEGIS LIVE COLLABORATION BAR
+   ========================================= */
+
+.aegis-collaboration-bar {
+  position: fixed;
+  top: 72px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+  padding: 10px 14px;
+
+  background: var(--aegis-toolbar-bg);
+  border: 1px solid var(--aegis-border);
+  border-radius: 10px;
+
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+
+  z-index: 1000;
+}
+
+.aegis-collaboration-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  color: var(--aegis-text);
+  font-size: 13px;
+}
+
+.aegis-collaboration-info strong {
+  font-weight: 600;
+}
+
+.aegis-collaboration-info span {
+  color: var(--aegis-muted);
+  font-size: 12px;
+}
+
+.aegis-collaboration-bar button {
+  border: 1px solid var(--aegis-border);
+  border-radius: 7px;
+
+  padding: 7px 12px;
+
+  background: transparent;
+  color: var(--aegis-text);
+
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.aegis-collaboration-bar button:hover {
+  background: var(--aegis-active);
+  color: var(--aegis-active-text);
+}
+/* =========================================================
+   COLLABORATION CANVAS APPEARANCE
+   ========================================================= */
+
+html[data-aegis-collaboration="true"] {
+  --aegis-canvas-bg:
+    var(--aegis-collaboration-canvas-bg);
+}
+
+
+/* =========================================================
+   AEGIS BOARD — CINEMATIC LOGIN
+   ========================================================= */
+
+.aegis-login-page {
+  position: fixed;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+
+  z-index: 99999;
+
+  color: #ffffff;
+
+  background: #03040b;
+
+  font-family:
+    "Poppins",
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  isolation: isolate;
+}
+
+
+/* =========================================================
+   CINEMATIC BACKGROUND
+   ========================================================= */
+
+.aegis-login-background {
+  position: absolute;
+  inset: -3%;
+
+  z-index: 0;
+
+  background-image:
+    url("/assets/auth/board.png");
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  transform: scale(1.03);
+
+  filter:
+    saturate(1.08)
+    contrast(1.02);
+
+  animation:
+    aegis-login-bg-movement
+    22s ease-in-out infinite alternate;
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   CINEMATIC OVERLAY
+   ========================================================= */
+
+.aegis-login-overlay {
+  position: absolute;
+  inset: 0;
+
+  z-index: 3;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(2, 4, 15, 0.42) 0%,
+      rgba(4, 5, 20, 0.10) 40%,
+      rgba(8, 4, 25, 0.08) 65%,
+      rgba(2, 3, 12, 0.34) 100%
+    );
+
+  pointer-events: none;
+}
+
+
+/* Atmospheric violet + gold light */
+
+.aegis-login-overlay::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(
+      ellipse at 58% 52%,
+      rgba(123, 76, 255, 0.17),
+      transparent 38%
+    );
+
+  pointer-events: none;
+}
+
+
+/* Dark edge vignette */
+
+.aegis-login-overlay::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      transparent 40%,
+      rgba(0, 0, 0, 0.28) 100%
+    );
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   AMBIENT VIOLET LIGHT
+   ========================================================= */
+
+.aegis-login-page::after {
+  content: "";
+
+  position: absolute;
+
+  width: 520px;
+  height: 520px;
+
+  left: 67%;
+  top: 52%;
+
+  transform:
+    translate(-50%, -50%);
+
+  z-index: 4;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(130, 86, 255, 0.14) 0%,
+      rgba(105, 64, 245, 0.07) 35%,
+      transparent 72%
+    );
+
+  filter: blur(45px);
+
+  pointer-events: none;
+
+  animation:
+    aegis-ambient-pulse
+    5s
+    ease-in-out
+    infinite;
+}
+
+
+/* =========================================================
+   TOP BRAND
+   ========================================================= */
+
+.aegis-login-brand {
+  position: absolute;
+
+  top: 28px;
+  left: 50%;
+
+  z-index: 20;
+
+  transform:
+    translateX(-50%);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  user-select: none;
+
+  transition:
+    transform 400ms cubic-bezier(.16, 1, .3, 1);
+}
+
+.aegis-login-brand:hover {
+  transform:
+    translateX(-50%)
+    translateY(-2px);
+}
+
+
+/* Aegis mark */
+
+.aegis-login-mark {
+  width: 44px;
+  height: 44px;
+
+  display: grid;
+  place-items: center;
+
+  margin-bottom: 9px;
+
+  border:
+    1px solid
+    rgba(195, 178, 255, 0.55);
+
+  border-radius: 13px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(142, 108, 255, 0.95),
+      rgba(69, 39, 194, 0.92)
+    );
+
+  box-shadow:
+    0 0 15px rgba(116, 78, 255, 0.45),
+    0 0 32px rgba(105, 68, 245, 0.22),
+    inset 0 1px 1px rgba(255, 255, 255, 0.45);
+
+  transform:
+    rotate(45deg);
+
+  transition:
+    transform 450ms cubic-bezier(.16,1,.3,1),
+    box-shadow 350ms ease;
+}
+
+.aegis-login-brand:hover .aegis-login-mark {
+  transform:
+    rotate(45deg)
+    scale(1.08);
+
+  box-shadow:
+    0 0 22px rgba(137, 99, 255, 0.65),
+    0 0 48px rgba(112, 72, 255, 0.35),
+    inset 0 1px 1px rgba(255, 255, 255, 0.58);
+}
+
+.aegis-login-mark span {
+  color: #ffffff;
+
+  font-size: 22px;
+  font-weight: 800;
+
+  transform:
+    rotate(-45deg);
+
+  text-shadow:
+    0 0 12px rgba(255, 255, 255, 0.35);
+}
+
+
+/* Brand name */
+
+.aegis-login-brand-name {
+  display: flex;
+
+  gap: 5px;
+
+  font-size: 23px;
+  font-weight: 700;
+
+  letter-spacing: -0.8px;
+
+  transition:
+    transform 250ms ease,
+    text-shadow 250ms ease;
+}
+
+.aegis-login-brand:hover .aegis-login-brand-name {
+  transform:
+    translateY(-1px);
+
+  text-shadow:
+    0 0 20px rgba(132, 98, 255, 0.35);
+}
+
+.aegis-login-brand-aegis {
+  color: #ffffff;
+}
+
+.aegis-login-brand-board {
+  color: #ad99ff;
+
+  text-shadow:
+    0 0 18px rgba(130, 102, 255, 0.55);
+}
+
+
+/* Tagline */
+
+.aegis-login-tagline {
+  margin-top: 5px;
+
+  color:
+    rgba(255, 255, 255, 0.50);
+
+  font-size: 7px;
+  font-weight: 600;
+
+  letter-spacing: 3.1px;
+
+  transition:
+    color 250ms ease,
+    text-shadow 250ms ease;
+}
+
+.aegis-login-brand:hover .aegis-login-tagline {
+  color:
+    rgba(204, 194, 255, 0.78);
+
+  text-shadow:
+    0 0 14px rgba(131, 99, 255, 0.55);
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+   ========================================================= */
+
+.aegis-login-content {
+  position: relative;
+
+  z-index: 10;
+
+  width:
+    min(
+      1180px,
+      calc(100vw - 90px)
+    );
+
+  height: 100%;
+
+  margin: 0 auto;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 90px;
+
+  padding:
+    90px 20px 70px;
+}
+
+
+/* =========================================================
+   LEFT INTRO
+   ========================================================= */
+
+.aegis-login-intro {
+  width: 475px;
+
+  flex-shrink: 0;
+}
+
+
+/* Eyebrow */
+
+.aegis-login-eyebrow {
+  display: inline-block;
+
+  margin-bottom: 15px;
+
+  padding:
+    5px 10px;
+
+  border:
+    1px solid
+    rgba(155, 128, 255, 0.18);
+
+  border-radius: 999px;
+
+  color: #b09dff;
+
+  background:
+    rgba(112, 80, 255, 0.06);
+
+  font-size: 9px;
+  font-weight: 600;
+
+  letter-spacing: 2.8px;
+
+  box-shadow:
+    0 0 18px rgba(108, 75, 255, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+
+  transition:
+    transform 250ms cubic-bezier(.16,1,.3,1),
+    border-color 250ms ease,
+    box-shadow 250ms ease,
+    text-shadow 250ms ease;
+}
+
+.aegis-login-eyebrow:hover {
+  transform:
+    translateY(-2px);
+
+  border-color:
+    rgba(174, 150, 255, 0.42);
+
+  box-shadow:
+    0 0 25px rgba(112, 78, 255, 0.22);
+
+  text-shadow:
+    0 0 14px rgba(142, 112, 255, 0.7);
+}
+
+
+/* Main heading */
+
+.aegis-login-intro h1 {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size:
+    clamp(
+      48px,
+      5vw,
+      70px
+    );
+
+  font-weight: 700;
+
+  line-height: 0.98;
+
+  letter-spacing: -3.5px;
+
+  text-shadow:
+    0 12px 45px rgba(0, 0, 0, 0.5);
+
+  transition:
+    transform 350ms cubic-bezier(.16,1,.3,1),
+    text-shadow 350ms ease;
+}
+
+.aegis-login-intro h1:hover {
+  transform:
+    translateY(-3px);
+
+  text-shadow:
+    0 12px 45px rgba(0, 0, 0, 0.52),
+    0 0 30px rgba(128, 91, 255, 0.16);
+}
+
+.aegis-login-intro h1 span {
+  color: #a38dff;
+
+  text-shadow:
+    0 0 18px rgba(121, 87, 255, 0.45),
+    0 0 38px rgba(110, 75, 255, 0.18);
+
+  transition:
+    color 250ms ease,
+    text-shadow 250ms ease;
+}
+
+.aegis-login-intro h1:hover span {
+  color: #b9a8ff;
+
+  text-shadow:
+    0 0 20px rgba(145, 112, 255, 0.75),
+    0 0 45px rgba(115, 75, 255, 0.35);
+}
+
+
+/* Intro paragraph */
+
+.aegis-login-intro > p {
+  width: 400px;
+
+  margin:
+    25px 0 29px;
+
+  color:
+    rgba(255, 255, 255, 0.68);
+
+  font-size: 14px;
+
+  font-weight: 400;
+
+  line-height: 1.75;
+
+  transition:
+    transform 300ms cubic-bezier(.16,1,.3,1),
+    color 250ms ease,
+    text-shadow 250ms ease;
+}
+
+.aegis-login-intro > p:hover {
+  transform:
+    translateY(-2px);
+
+  color:
+    rgba(255, 255, 255, 0.86);
+
+  text-shadow:
+    0 0 18px rgba(134, 103, 255, 0.22);
+}
+
+
+/* =========================================================
+   FEATURE ITEMS
+   ========================================================= */
+
+.aegis-login-features {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 10px;
+}
+
+.aegis-login-feature {
+  width: fit-content;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  padding:
+    6px 14px 6px 6px;
+
+  border:
+    1px solid
+    rgba(177, 155, 255, 0.10);
+
+  border-radius: 14px;
+
+  background:
+    rgba(255, 255, 255, 0.018);
+
+  backdrop-filter:
+    blur(10px);
+
+  -webkit-backdrop-filter:
+    blur(10px);
+
+  transition:
+    transform 320ms cubic-bezier(.16,1,.3,1),
+    background 250ms ease,
+    border-color 250ms ease,
+    box-shadow 300ms ease;
+}
+
+.aegis-login-feature:hover {
+  transform:
+    translateX(9px)
+    translateY(-3px);
+
+  border-color:
+    rgba(160, 137, 255, 0.34);
+
+  background:
+    rgba(113, 82, 255, 0.09);
+
+  box-shadow:
+    0 10px 35px rgba(0, 0, 0, 0.18),
+    0 0 25px rgba(109, 75, 255, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+
+/* Feature icon */
+
+.aegis-login-feature-icon {
+  width: 38px;
+  height: 38px;
+
+  flex: 0 0 38px;
+
+  display: grid;
+
+  place-items: center;
+
+  border:
+    1px solid
+    rgba(155, 134, 255, 0.30);
+
+  border-radius: 11px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(129, 96, 255, 0.14),
+      rgba(86, 57, 210, 0.07)
+    );
+
+  color: #b9aaff;
+
+  box-shadow:
+    0 0 18px rgba(106, 74, 255, 0.07),
+    inset 0 1px 0 rgba(255, 255, 255, 0.09);
+
+  transition:
+    transform 300ms cubic-bezier(.16,1,.3,1),
+    background 250ms ease,
+    border-color 250ms ease,
+    box-shadow 300ms ease;
+}
+
+.aegis-login-feature:hover
+.aegis-login-feature-icon {
+  transform:
+    scale(1.08)
+    rotate(-4deg);
+
+  border-color:
+    rgba(177, 157, 255, 0.62);
+
+  background:
+    rgba(119, 88, 255, 0.18);
+
+  box-shadow:
+    0 0 22px rgba(112, 80, 255, 0.30),
+    0 0 42px rgba(104, 71, 245, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14);
+}
+
+
+/* Feature text */
+
+.aegis-login-feature strong {
+  display: block;
+
+  margin-bottom: 2px;
+
+  color:
+    rgba(255, 255, 255, 0.94);
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  transition:
+    transform 250ms ease,
+    color 250ms ease,
+    text-shadow 250ms ease;
+}
+
+.aegis-login-feature:hover strong {
+  transform:
+    translateX(2px);
+
+  color: #ffffff;
+
+  text-shadow:
+    0 0 14px rgba(147, 113, 255, 0.55);
+}
+
+.aegis-login-feature span {
+  display: block;
+
+  color:
+    rgba(255, 255, 255, 0.46);
+
+  font-size: 10px;
+
+  transition:
+    color 250ms ease,
+    transform 250ms ease;
+}
+
+.aegis-login-feature:hover span {
+  transform:
+    translateX(2px);
+
+  color:
+    rgba(221, 213, 255, 0.72);
+}
+
+
+/* =========================================================
+   PREMIUM GLASS LOGIN CARD
+   ========================================================= */
+
+.aegis-login-card {
+  position: relative;
+
+  width: 390px;
+
+  flex: 0 0 390px;
+
+  padding: 1px;
+
+  overflow: visible;
+
+  border:
+    1px solid
+    rgba(222, 214, 255, 0.22);
+
+  border-radius: 28px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.13),
+      rgba(155, 125, 255, 0.055) 42%,
+      rgba(255, 255, 255, 0.025)
+    );
+
+  box-shadow:
+    0 30px 100px rgba(0, 0, 0, 0.34),
+    0 0 50px rgba(106, 75, 255, 0.10),
+    0 0 110px rgba(84, 54, 220, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.24),
+    inset 0 -1px 0 rgba(20, 10, 55, 0.22);
+
+  backdrop-filter:
+    blur(25px)
+    saturate(145%);
+
+  -webkit-backdrop-filter:
+    blur(25px)
+    saturate(145%);
+
+  transition:
+    transform 450ms cubic-bezier(.16,1,.3,1),
+    border-color 350ms ease,
+    box-shadow 400ms ease;
+}
+
+.aegis-login-card:hover {
+  transform:
+    translateY(-6px);
+
+  border-color:
+    rgba(197, 181, 255, 0.40);
+
+  box-shadow:
+    0 40px 115px rgba(0, 0, 0, 0.38),
+    0 0 65px rgba(110, 77, 255, 0.18),
+    0 0 130px rgba(90, 54, 225, 0.10),
+    inset 0 1px 0 rgba(255, 255, 255, 0.31),
+    inset 0 -1px 0 rgba(20, 10, 55, 0.20);
+}
+
+
+/* =========================================================
+   CARD VIOLET AMBIENT LIGHT
+   ========================================================= */
+
+.aegis-login-card-glow {
+  position: absolute;
+
+  inset: -85px;
+
+  z-index: -1;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(113, 77, 255, 0.22) 0%,
+      rgba(94, 59, 235, 0.11) 32%,
+      transparent 68%
+    );
+
+  filter:
+    blur(38px);
+
+  opacity: 0.72;
+
+  pointer-events: none;
+
+  transition:
+    opacity 400ms ease,
+    transform 500ms ease;
+}
+
+.aegis-login-card:hover
+.aegis-login-card-glow {
+  opacity: 1;
+
+  transform:
+    scale(1.10);
+}
+
+
+/* =========================================================
+   GLASS CARD CONTENT
+   ========================================================= */
+
+.aegis-login-card-content {
+  position: relative;
+
+  padding:
+    35px
+    34px
+    28px;
+
+  border-radius: 27px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.085),
+      rgba(255, 255, 255, 0.028) 48%,
+      rgba(94, 67, 210, 0.035)
+    );
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.075);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.14),
+    inset 0 -1px 0 rgba(15, 8, 40, 0.15);
+
+  backdrop-filter:
+    blur(13px)
+    saturate(135%);
+
+  -webkit-backdrop-filter:
+    blur(13px)
+    saturate(135%);
+}
+
+
+/* =========================================================
+   LOGIN HEADING
+   ========================================================= */
+
+.aegis-login-heading {
+  margin-bottom: 27px;
+}
+
+.aegis-login-small-label {
+  display: inline-block;
+
+  margin-bottom: 8px;
+
+  color: #a797ff;
+
+  font-size: 8px;
+  font-weight: 700;
+
+  letter-spacing: 2.8px;
+
+  transition:
+    transform 250ms ease,
+    text-shadow 250ms ease;
+}
+
+.aegis-login-small-label:hover {
+  transform:
+    translateY(-2px);
+
+  text-shadow:
+    0 0 16px rgba(143, 110, 255, 0.7);
+}
+
+.aegis-login-heading h2 {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: 29px;
+
+  font-weight: 700;
+
+  letter-spacing: -1px;
+
+  transition:
+    transform 300ms cubic-bezier(.16,1,.3,1),
+    text-shadow 300ms ease;
+}
+
+.aegis-login-heading h2:hover {
+  transform:
+    translateY(-2px);
+
+  text-shadow:
+    0 0 24px rgba(138, 103, 255, 0.35);
+}
+
+.aegis-login-heading p {
+  margin:
+    7px 0 0;
+
+  color:
+    rgba(255, 255, 255, 0.50);
+
+  font-size: 11px;
+
+  line-height: 1.5;
+
+  transition:
+    transform 250ms ease,
+    color 250ms ease,
+    text-shadow 250ms ease;
+}
+
+.aegis-login-heading p:hover {
+  transform:
+    translateY(-1px);
+
+  color:
+    rgba(255, 255, 255, 0.72);
+
+  text-shadow:
+    0 0 15px rgba(127, 95, 255, 0.20);
+}
+
+
+/* =========================================================
+   FORM
+   ========================================================= */
+
+.aegis-login-form {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 17px;
+}
+
+
+/* =========================================================
+   FIELD
+   ========================================================= */
+
+.aegis-login-field {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 7px;
+}
+
+.aegis-login-field > span {
+  color:
+    rgba(255, 255, 255, 0.68);
+
+  font-size: 10px;
+
+  font-weight: 600;
+
+  transition:
+    color 220ms ease,
+    transform 220ms ease,
+    text-shadow 220ms ease;
+}
+
+.aegis-login-field:hover > span {
+  transform:
+    translateX(2px);
+
+  color:
+    rgba(221, 213, 255, 0.92);
+
+  text-shadow:
+    0 0 12px rgba(130, 96, 255, 0.35);
+}
+
+
+/* =========================================================
+   GLASS INPUT
+   ========================================================= */
+
+.aegis-login-input-wrap {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+
+  width: 100%;
+  height: 49px;
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    rgba(196, 177, 255, 0.22);
+
+  border-radius: 13px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.075),
+      rgba(116, 84, 255, 0.045)
+    );
+
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.08),
+    0 0 14px rgba(121, 86, 255, 0.08),
+    0 0 30px rgba(105, 71, 245, 0.035),
+    inset 0 1px 0 rgba(255, 255, 255, 0.075),
+    inset 0 -1px 0 rgba(20, 10, 60, 0.12);
+
+  backdrop-filter:
+    blur(12px)
+    saturate(135%);
+
+  -webkit-backdrop-filter:
+    blur(12px)
+    saturate(135%);
+
+  transition:
+    transform 280ms cubic-bezier(.16,1,.3,1),
+    border-color 280ms ease,
+    background 280ms ease,
+    box-shadow 320ms ease;
+
+  animation:
+    aegis-input-idle-glow
+    4.5s
+    ease-in-out
+    infinite;
+}
+
+/* Moving violet energy along the input edge */
+.aegis-login-input-wrap::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  border-radius: inherit;
+
+  background:
+    linear-gradient(
+      105deg,
+      transparent 0%,
+      transparent 28%,
+      rgba(172, 142, 255, 0.00) 37%,
+      rgba(174, 143, 255, 0.48) 47%,
+      rgba(221, 207, 255, 0.72) 50%,
+      rgba(157, 123, 255, 0.28) 55%,
+      transparent 67%,
+      transparent 100%
+    );
+
+  background-size: 220% 100%;
+
+  background-position: 180% 0;
+
+  opacity: 0.42;
+
+  pointer-events: none;
+
+  animation:
+    aegis-input-energy-flow
+    4.2s
+    linear
+    infinite;
+}
+
+/* Soft inner energy */
+.aegis-login-input-wrap::after {
+  content: "";
+
+  position: absolute;
+  inset: 1px;
+
+  border-radius: 12px;
+
+  background:
+    radial-gradient(
+      ellipse at 50% 0%,
+      rgba(157, 124, 255, 0.09),
+      transparent 58%
+    );
+
+  opacity: 0.7;
+
+  pointer-events: none;
+}
+
+
+/* Input hover */
+
+.aegis-login-input-wrap:hover {
+  transform:
+    translateY(-2px);
+
+  border-color:
+    rgba(169, 145, 255, 0.62);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.09),
+      rgba(118, 84, 255, 0.075)
+    );
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.13),
+    0 0 20px rgba(111, 76, 255, 0.18),
+    0 0 42px rgba(111, 76, 255, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.10);
+}
+
+
+/* Input focus */
+
+.aegis-login-input-wrap:focus-within {
+  transform:
+    translateY(-3px)
+    scale(1.008);
+
+  border-color:
+    rgba(193, 174, 255, 0.92);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.075),
+      rgba(121, 87, 255, 0.085)
+    );
+
+  box-shadow:
+    0 0 0 1px rgba(150, 117, 255, 0.20),
+    0 0 15px rgba(132, 96, 255, 0.42),
+    0 0 32px rgba(108, 72, 255, 0.30),
+    0 0 58px rgba(108, 72, 255, 0.14),
+    0 12px 32px rgba(35, 20, 110, 0.20),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14);
+}
+
+.aegis-login-input-wrap:focus-within::before {
+  opacity: 0.85;
+
+  animation-duration:
+    2.2s;
+}
+
+.aegis-login-input-wrap:focus-within::after {
+  opacity: 1;
+}
+
+
+/* Input hover */
+
+.aegis-login-input-wrap:hover {
+  transform:
+    translateY(-2px);
+
+  border-color:
+    rgba(169, 145, 255, 0.48);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.09),
+      rgba(118, 84, 255, 0.075)
+    );
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.13),
+    0 0 22px rgba(111, 76, 255, 0.13),
+    inset 0 1px 0 rgba(255, 255, 255, 0.10);
+}
+
+
+/* Input focus */
+
+.aegis-login-input-wrap:focus-within {
+  transform:
+    translateY(-3px)
+    scale(1.008);
+
+  border-color:
+    rgba(178, 155, 255, 0.86);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.105),
+      rgba(121, 87, 255, 0.10)
+    );
+
+  box-shadow:
+    0 0 0 2px rgba(115, 81, 255, 0.12),
+    0 0 18px rgba(132, 96, 255, 0.30),
+    0 0 38px rgba(108, 72, 255, 0.20),
+    0 12px 32px rgba(35, 20, 110, 0.20),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14);
+}
+
+
+/* Input */
+
+.aegis-login-input-wrap input {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+
+  padding:
+    0 14px;
+
+  border: 0;
+
+  outline: 0;
+
+  background: transparent !important;
+
+  color: #ffffff !important;
+
+  font-family: inherit;
+
+  font-size: 12px;
+
+  font-weight: 400;
+}
+
+.aegis-login-input-wrap input:-webkit-autofill,
+.aegis-login-input-wrap input:-webkit-autofill:hover,
+.aegis-login-input-wrap input:-webkit-autofill:focus,
+.aegis-login-input-wrap input:-webkit-autofill:active {
+  -webkit-text-fill-color: #ffffff !important;
+  caret-color: #ffffff;
+
+  background-color: transparent !important;
+
+  -webkit-box-shadow:
+    0 0 0 1000px rgba(10, 8, 28, 0.34) inset,
+    0 0 0 1px rgba(157, 124, 255, 0.10) inset !important;
+
+  box-shadow:
+    0 0 0 1000px rgba(10, 8, 28, 0.34) inset,
+    0 0 0 1px rgba(157, 124, 255, 0.10) inset !important;
+
+  transition:
+    background-color 99999s ease-in-out 0s;
+}
+
+.aegis-login-input-wrap input::placeholder {
+  color:
+    rgba(255, 255, 255, 0.30);
+
+  transition:
+    color 200ms ease;
+}
+
+.aegis-login-input-wrap:focus-within
+input::placeholder {
+  color:
+    rgba(210, 199, 255, 0.38);
+}
+
+.aegis-login-input-wrap input:disabled {
+  opacity: 0.55;
+}
+
+
+/* =========================================================
+   PASSWORD TOGGLE
+   ========================================================= */
+
+.aegis-login-password-toggle {
+  position: absolute;
+  z-index: 3;
+
+  right: 7px;
+
+  padding:
+    6px 9px;
+
+  border: 1px solid
+    rgba(255, 255, 255, 0.06);
+
+  border-radius: 8px;
+
+  background:
+    rgba(255, 255, 255, 0.045);
+
+  color:
+    rgba(255, 255, 255, 0.46);
+
+  font-family: inherit;
+
+  font-size: 9px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    color 200ms ease,
+    background 200ms ease,
+    transform 200ms ease,
+    box-shadow 250ms ease,
+    border-color 200ms ease;
+}
+
+.aegis-login-password-toggle:hover:not(:disabled) {
+  transform:
+    translateY(-1px);
+
+  color: #ddd5ff;
+
+  border-color:
+    rgba(164, 139, 255, 0.30);
+
+  background:
+    rgba(126, 96, 255, 0.13);
+
+  box-shadow:
+    0 0 18px rgba(113, 80, 255, 0.20);
+}
+
+
+/* =========================================================
+   ERROR
+   ========================================================= */
+
+.aegis-login-error {
+  padding:
+    9px 11px;
+
+  border:
+    1px solid
+    rgba(255, 105, 130, 0.22);
+
+  border-radius: 10px;
+
+  background:
+    rgba(150, 35, 60, 0.13);
+
+  color:
+    rgba(255, 190, 201, 0.94);
+
+  font-size: 10px;
+
+  line-height: 1.45;
+
+  box-shadow:
+    0 0 20px rgba(180, 35, 70, 0.06);
+}
+
+
+/* =========================================================
+   OPTIONS
+   ========================================================= */
+
+.aegis-login-options {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  margin-top: -2px;
+}
+
+
+/* Remember */
+
+.aegis-login-remember {
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  padding:
+    5px 7px;
+
+  margin-left: -7px;
+
+  border-radius: 7px;
+
+  color:
+    rgba(255, 255, 255, 0.47);
+
+  font-size: 9px;
+
+  cursor: pointer;
+
+  transition:
+    color 200ms ease,
+    background 200ms ease,
+    transform 200ms ease;
+}
+
+.aegis-login-remember:hover {
+  transform:
+    translateY(-1px);
+
+  color:
+    rgba(255, 255, 255, 0.82);
+
+  background:
+    rgba(255, 255, 255, 0.045);
+}
+
+.aegis-login-remember input {
+  width: 12px;
+  height: 12px;
+
+  margin: 0;
+
+  accent-color: #7959ff;
+
+  cursor: pointer;
+}
+
+
+/* Forgot */
+
+.aegis-login-forgot {
+  padding:
+    5px 7px;
+
+  margin-right: -7px;
+
+  border: 0;
+
+  border-radius: 7px;
+
+  background: transparent;
+
+  color:
+    rgba(171, 154, 255, 0.84);
+
+  font-family: inherit;
+
+  font-size: 9px;
+
+  cursor: pointer;
+
+  transition:
+    color 200ms ease,
+    background 200ms ease,
+    transform 200ms ease,
+    text-shadow 200ms ease;
+}
+
+.aegis-login-forgot:hover:not(:disabled) {
+  transform:
+    translateY(-1px);
+
+  color: #e0d8ff;
+
+  background:
+    rgba(127, 97, 255, 0.08);
+
+  text-shadow:
+    0 0 15px rgba(140, 112, 255, 0.70);
+}
+
+
+/* =========================================================
+   SIGN IN — VIOLET ENERGY CORE
+   ========================================================= */
+
+.aegis-login-submit {
+  position: relative;
+
+  width: 100%;
+  height: 51px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 10px;
+
+  margin-top: 2px;
+
+  border:
+    1px solid
+    rgba(214, 198, 255, 0.48);
+
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      110deg,
+      #4a27d5 0%,
+      #6037eb 28%,
+      #794aff 52%,
+      #6339ed 74%,
+      #4925c7 100%
+    );
+
+  color: #ffffff;
+
+  font-family: inherit;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.7px;
+
+  cursor: pointer;
+
+  z-index: 1;
+
+  box-shadow:
+    0 0 8px rgba(135, 88, 255, 0.65),
+    0 0 20px rgba(122, 75, 255, 0.48),
+    0 0 38px rgba(105, 59, 245, 0.34),
+    0 12px 30px rgba(55, 25, 160, 0.30),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
+
+  transition:
+    transform 280ms cubic-bezier(.16,1,.3,1),
+    border-color 280ms ease,
+    box-shadow 350ms ease,
+    filter 280ms ease;
+
+  animation:
+    aegis-button-glow
+    3s
+    ease-in-out
+    infinite;
+}
+
+
+/* Pure violet aura */
+
+.aegis-login-submit::before {
+  content: "";
+
+  position: absolute;
+
+  inset: -17px;
+
+  z-index: -1;
+
+  border-radius: 24px;
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(137, 87, 255, 0.45) 0%,
+      rgba(119, 69, 255, 0.27) 30%,
+      rgba(101, 55, 240, 0.13) 50%,
+      transparent 73%
+    );
+
+  filter:
+    blur(18px);
+
+  opacity: 0.86;
+
+  pointer-events: none;
+
+  animation:
+    aegis-button-aura
+    3s
+    ease-in-out
+    infinite;
+}
+
+
+/* Absolutely no white shine */
+
+.aegis-login-submit::after {
+  display: none;
+}
+
+
+/* Strong hover */
+
+.aegis-login-submit:hover:not(:disabled) {
+  transform:
+    translateY(-4px)
+    scale(1.018);
+
+  border-color:
+    rgba(231, 222, 255, 0.92);
+
+  filter:
+    brightness(1.10);
+
+  box-shadow:
+    0 0 10px rgba(168, 119, 255, 1),
+    0 0 24px rgba(153, 98, 255, 0.95),
+    0 0 48px rgba(137, 82, 255, 0.82),
+    0 0 78px rgba(121, 69, 255, 0.62),
+    0 0 120px rgba(105, 57, 245, 0.38),
+    0 20px 46px rgba(55, 25, 160, 0.42),
+    inset 0 1px 0 rgba(255, 255, 255, 0.32);
+}
+
+.aegis-login-submit:hover:not(:disabled)::before {
+  inset: -30px;
+
+  opacity: 1;
+
+  filter:
+    blur(25px);
+
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(164, 110, 255, 0.72) 0%,
+      rgba(144, 88, 255, 0.46) 28%,
+      rgba(120, 68, 250, 0.23) 49%,
+      transparent 75%
+    );
+
+  animation:
+    aegis-button-hover-aura
+    1.6s
+    ease-in-out
+    infinite;
+}
+
+
+/* Click */
+
+.aegis-login-submit:active:not(:disabled) {
+  transform:
+    translateY(-1px)
+    scale(0.985);
+
+  box-shadow:
+    0 0 10px rgba(150, 100, 255, 0.90),
+    0 0 25px rgba(135, 82, 255, 0.72),
+    0 0 45px rgba(115, 65, 245, 0.52),
+    0 8px 20px rgba(55, 25, 160, 0.28);
+}
+
+
+/* Disabled */
+
+.aegis-login-submit:disabled {
+  opacity: 0.58;
+
+  cursor: not-allowed;
+
+  animation: none;
+
+  box-shadow:
+    0 0 8px rgba(110, 75, 220, 0.18),
+    0 6px 18px rgba(55, 25, 160, 0.12);
+}
+
+
+/* Button text */
+
+.aegis-login-submit > span {
+  position: relative;
+
+  z-index: 3;
+
+  transition:
+    transform 250ms cubic-bezier(.16,1,.3,1),
+    text-shadow 250ms ease;
+}
+
+.aegis-login-submit:hover:not(:disabled)
+> span:first-child {
+  text-shadow:
+    0 0 15px rgba(255, 255, 255, 0.45);
+}
+
+
+/* Arrow */
+
+.aegis-login-arrow {
+  position: relative;
+
+  z-index: 3;
+
+  font-size: 15px;
+
+  text-shadow:
+    0 0 10px rgba(218, 205, 255, 0.90);
+
+  transition:
+    transform 260ms cubic-bezier(.16,1,.3,1);
+}
+
+.aegis-login-submit:hover:not(:disabled)
+.aegis-login-arrow {
+  transform:
+    translateX(7px);
+}
+
+
+/* =========================================================
+   BUTTON ANIMATIONS
+   ========================================================= */
+
+@keyframes aegis-button-glow {
+  0%,
+  100% {
+    box-shadow:
+      0 0 8px rgba(135, 88, 255, 0.65),
+      0 0 20px rgba(122, 75, 255, 0.48),
+      0 0 38px rgba(105, 59, 245, 0.34),
+      0 12px 30px rgba(55, 25, 160, 0.30),
+      inset 0 1px 0 rgba(255, 255, 255, 0.22);
+  }
+
+  50% {
+    box-shadow:
+      0 0 13px rgba(150, 98, 255, 0.82),
+      0 0 29px rgba(137, 84, 255, 0.66),
+      0 0 52px rgba(121, 69, 250, 0.48),
+      0 0 78px rgba(105, 58, 240, 0.24),
+      0 14px 34px rgba(55, 25, 160, 0.34),
+      inset 0 1px 0 rgba(255, 255, 255, 0.26);
+  }
+}
+
+@keyframes aegis-button-aura {
+  0%,
+  100% {
+    transform: scale(0.95);
+    opacity: 0.64;
+  }
+
+  50% {
+    transform: scale(1.06);
+    opacity: 0.98;
+  }
+}
+
+@keyframes aegis-button-hover-aura {
+  0%,
+  100% {
+    transform: scale(0.97);
+    opacity: 0.78;
+  }
+
+  50% {
+    transform: scale(1.12);
+    opacity: 1;
+  }
+}
+
+
+/* =========================================================
+   SECURITY
+   ========================================================= */
+
+.aegis-login-security {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 7px;
+
+  margin-top: 22px;
+
+  color:
+    rgba(255, 255, 255, 0.30);
+
+  font-size: 8px;
+
+  transition:
+    transform 250ms ease,
+    color 250ms ease,
+    text-shadow 250ms ease;
+}
+
+.aegis-login-security:hover {
+  transform:
+    translateY(-1px);
+
+  color:
+    rgba(221, 213, 255, 0.62);
+
+  text-shadow:
+    0 0 12px rgba(130, 96, 255, 0.30);
+}
+
+.aegis-login-security-dot {
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background:
+    #9a82ff;
+
+  box-shadow:
+    0 0 8px rgba(141, 117, 255, 0.80),
+    0 0 18px rgba(125, 95, 255, 0.35);
+
+  animation:
+    aegis-login-dot-pulse
+    2.4s
+    ease-in-out
+    infinite;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.aegis-login-footer {
+  position: absolute;
+
+  bottom: 24px;
+  left: 50%;
+
+  z-index: 20;
+
+  transform:
+    translateX(-50%);
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 13px;
+
+  color:
+    rgba(255, 255, 255, 0.30);
+
+  font-size: 8px;
+
+  font-weight: 600;
+
+  letter-spacing: 1.5px;
+
+  white-space: nowrap;
+
+  transition:
+    color 250ms ease,
+    text-shadow 250ms ease;
+}
+
+.aegis-login-footer:hover {
+  color:
+    rgba(230, 224, 255, 0.72);
+
+  text-shadow:
+    0 0 15px rgba(126, 92, 255, 0.40);
+}
+
+.aegis-login-footer i {
+  width: 3px;
+  height: 3px;
+
+  border-radius: 50%;
+
+  background:
+    #9b80ff;
+
+  box-shadow:
+    0 0 8px rgba(139, 115, 255, 0.75),
+    0 0 16px rgba(120, 90, 255, 0.30);
+}
+
+
+/* =========================================================
+   CINEMATIC ANIMATIONS
+   ========================================================= */
+
+@keyframes aegis-login-bg-movement {
+  0% {
+    transform:
+      scale(1.03)
+      translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform:
+      scale(1.045)
+      translate3d(-5px, -3px, 0);
+  }
+
+  100% {
+    transform:
+      scale(1.06)
+      translate3d(6px, -5px, 0);
+  }
+}
+
+
+
+
+/* =========================================================
+   INPUT ENERGY FLOW
+   ========================================================= */
+
+@keyframes aegis-input-energy-flow {
+  0% {
+    background-position: 180% 0;
+  }
+
+  100% {
+    background-position: -40% 0;
+  }
+}
+
+@keyframes aegis-input-idle-glow {
+  0%,
+  100% {
+    box-shadow:
+      0 8px 25px rgba(0, 0, 0, 0.08),
+      0 0 12px rgba(121, 86, 255, 0.07),
+      0 0 26px rgba(105, 71, 245, 0.025),
+      inset 0 1px 0 rgba(255, 255, 255, 0.075),
+      inset 0 -1px 0 rgba(20, 10, 60, 0.12);
+  }
+
+  50% {
+    box-shadow:
+      0 8px 25px rgba(0, 0, 0, 0.08),
+      0 0 18px rgba(132, 96, 255, 0.14),
+      0 0 38px rgba(105, 71, 245, 0.055),
+      inset 0 1px 0 rgba(255, 255, 255, 0.10),
+      inset 0 -1px 0 rgba(20, 10, 60, 0.12);
+  }
+}
+
+
+/* Ambient light */
+
+@keyframes aegis-ambient-pulse {
+  0%,
+  100% {
+    transform:
+      translate(-50%, -50%)
+      scale(0.92);
+
+    opacity: 0.62;
+  }
+
+  50% {
+    transform:
+      translate(-50%, -50%)
+      scale(1.08);
+
+    opacity: 1;
+  }
+}
+
+
+/* Security dot */
+
+@keyframes aegis-login-dot-pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+
+    box-shadow:
+      0 0 6px rgba(141, 117, 255, 0.5);
+  }
+
+  50% {
+    opacity: 1;
+
+    box-shadow:
+      0 0 14px rgba(141, 117, 255, 1),
+      0 0 24px rgba(125, 95, 255, 0.35);
+  }
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 950px) {
+  .aegis-login-content {
+    width:
+      min(
+        520px,
+        calc(100vw - 40px)
+      );
+
+    justify-content: center;
+  }
+
+  .aegis-login-intro {
+    display: none;
+  }
+
+  .aegis-login-card {
+    width: 390px;
+
+    flex-basis: auto;
+  }
+
+  .aegis-login-background::before {
+    top: 48%;
+  }
+
+  .aegis-login-background::after {
+    top: 55%;
+  }
+}
+
+
+@media (max-width: 520px) {
+  .aegis-login-brand {
+    top: 20px;
+  }
+
+  .aegis-login-brand-name {
+    font-size: 21px;
+  }
+
+  .aegis-login-content {
+    width:
+      calc(100vw - 28px);
+
+    padding:
+      90px 0 60px;
+  }
+
+  .aegis-login-card-content {
+    padding:
+      28px 21px 23px;
+  }
+
+  .aegis-login-heading h2 {
+    font-size: 26px;
+  }
+
+  .aegis-login-footer {
+    bottom: 15px;
+
+    gap: 8px;
+
+    font-size: 7px;
+  }
+
+  .aegis-login-background::before {
+    width: 150%;
+  }
+
+  .aegis-login-background::after {
+    width: 150%;
+  }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .aegis-login-background {
+    animation: none;
+  }
+
+  .aegis-login-background::before,
+  .aegis-login-background::after,
+  .aegis-login-page::after,
+  .aegis-login-submit,
+  .aegis-login-submit::before,
+  .aegis-login-security-dot,
+  .aegis-login-input-wrap,
+  .aegis-login-input-wrap::before {
+    animation: none;
+  }
+
+  .aegis-login-card,
+  .aegis-login-feature,
+  .aegis-login-input-wrap,
+  .aegis-login-submit {
+    transition: none;
+  }
+}
+
+/* =========================================================
+   AEGIS BOARD — ACTIVE INPUT: ELECTRIC BLUE FOCUS
+   ========================================================= */
+
+.aegis-login-input-wrap {
+  /* Keep the field dark/glass when idle and typed. */
+  border-color: rgba(150, 135, 220, 0.22);
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.075),
+      rgba(72, 54, 150, 0.045)
+    );
+  transition:
+    transform 260ms cubic-bezier(.16,1,.3,1),
+    border-color 220ms ease,
+    background 220ms ease,
+    box-shadow 300ms ease;
+}
+
+/* Remove the old violet traveling edge in favor of a clean blue focus aura. */
+.aegis-login-input-wrap::before {
+  inset: -1px;
+  border-radius: inherit;
+  background:
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(55, 176, 255, 0) 24%,
+      rgba(64, 188, 255, 0.30) 42%,
+      rgba(130, 220, 255, 0.85) 50%,
+      rgba(64, 188, 255, 0.30) 58%,
+      rgba(55, 176, 255, 0) 76%,
+      transparent 100%
+    );
+  background-size: 220% 100%;
+  background-position: 180% 0;
+  opacity: 0;
+  transition: opacity 220ms ease;
+  mix-blend-mode: screen;
+}
+
+/* Keep the inner surface dark; never turn it white on focus/autofill. */
+.aegis-login-input-wrap::after {
+  inset: 1px;
+  border-radius: 12px;
+  background:
+    radial-gradient(
+      ellipse at 50% 0%,
+      rgba(68, 157, 255, 0.10),
+      transparent 62%
+    );
+  opacity: 0;
+  transition: opacity 220ms ease;
+}
+
+/* Hover: subtle blue lift, not the full focus glow. */
+.aegis-login-input-wrap:hover:not(:focus-within) {
+  transform: translateY(-2px);
+  border-color: rgba(82, 153, 235, 0.48);
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.13),
+    0 0 18px rgba(43, 126, 255, 0.16),
+    0 0 34px rgba(38, 108, 255, 0.07),
+    inset 0 1px 0 rgba(255, 255, 255, 0.10);
+}
+
+/* ACTIVE / SELECTED FIELD — bright blue border + layered glow. */
+.aegis-login-input-wrap:focus-within {
+  transform: translateY(-3px) scale(1.008);
+  border: 1.5px solid rgba(84, 190, 255, 0.98);
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.075),
+      rgba(45, 74, 160, 0.085)
+    );
+  box-shadow:
+    0 0 0 1px rgba(55, 171, 255, 0.42),
+    0 0 7px rgba(68, 188, 255, 0.78),
+    0 0 18px rgba(42, 151, 255, 0.62),
+    0 0 38px rgba(32, 112, 255, 0.36),
+    0 0 68px rgba(27, 92, 235, 0.16),
+    0 12px 32px rgba(12, 24, 85, 0.24),
+    inset 0 1px 0 rgba(220, 247, 255, 0.24);
+}
+
+.aegis-login-input-wrap:focus-within::before {
+  opacity: 0.95;
+  animation: aegis-blue-focus-sweep 2.2s linear infinite;
+}
+
+.aegis-login-input-wrap:focus-within::after {
+  opacity: 1;
+}
+
+/* Text/caret remain white and readable. */
+.aegis-login-input-wrap input,
+.aegis-login-input-wrap input:focus {
+  color: #ffffff !important;
+  caret-color: #ffffff;
+}
+
+/* Chrome/Edge autofill: preserve the dark glass instead of white fill. */
+.aegis-login-input-wrap input:-webkit-autofill,
+.aegis-login-input-wrap input:-webkit-autofill:hover,
+.aegis-login-input-wrap input:-webkit-autofill:focus,
+.aegis-login-input-wrap input:-webkit-autofill:active {
+  -webkit-text-fill-color: #ffffff !important;
+  caret-color: #ffffff !important;
+  background-color: transparent !important;
+  -webkit-box-shadow:
+    0 0 0 1000px rgba(11, 9, 31, 0.52) inset !important;
+  box-shadow:
+    0 0 0 1000px rgba(11, 9, 31, 0.52) inset !important;
+}
+
+/* Small moving blue highlight gives the selected field a living edge. */
+@keyframes aegis-blue-focus-sweep {
+  0% {
+    background-position: 180% 0;
+  }
+  100% {
+    background-position: -40% 0;
+  }
+}
+
+/* =========================================================
+   AEGIS BOARD — CLEAN BACKGROUND
+   No decorative ribbon layer is active.
+   ========================================================= */
+
+.aegis-login-background::before,
+.aegis-login-background::after {
+  display: none !important;
+  content: none !important;
+}
+
