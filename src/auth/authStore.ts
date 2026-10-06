@@ -235,3 +235,12 @@ export const logoutUser =
       SESSION_KEY,
     );
   };
+  export const deleteAllEmployeeAccounts = () => {
+  const accounts = readAccounts();
+
+  const adminAccounts = accounts.filter(
+    (account) => account.role === "admin"
+  );
+
+  writeAccounts(adminAccounts);
+};

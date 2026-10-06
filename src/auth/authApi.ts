@@ -189,6 +189,18 @@ export const createEmployee = async (
     },
   );
 };
+export const deleteAllEmployees =
+  async (): Promise<string> => {
+    const response =
+      await request<{ message: string }>(
+        "/api/employees",
+        {
+          method: "DELETE",
+        },
+      );
+
+    return response.message;
+  };
 // ==================================================
 // WORK MANAGEMENT
 // ==================================================

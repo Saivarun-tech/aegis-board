@@ -5,6 +5,7 @@ import {
 
 import {
   createEmployee,
+  deleteAllEmployees,
   getEmployees,
   type Employee,
 } from "../auth/authApi";
@@ -64,6 +65,10 @@ function EmployeeManagement({
     void loadEmployees();
   }, []);
 
+  // ==================================================
+  // CREATE EMPLOYEE
+  // ==================================================
+
   const handleCreateEmployee = async () => {
     setError("");
     setSuccess("");
@@ -78,17 +83,23 @@ function EmployeeManagement({
       email.trim().toLowerCase();
 
     if (!cleanCode) {
-      setError("Employee code is required.");
+      setError(
+        "Employee code is required.",
+      );
       return;
     }
 
     if (!cleanName) {
-      setError("Employee name is required.");
+      setError(
+        "Employee name is required.",
+      );
       return;
     }
 
     if (!cleanEmail) {
-      setError("Employee email is required.");
+      setError(
+        "Employee email is required.",
+      );
       return;
     }
 
@@ -135,6 +146,39 @@ function EmployeeManagement({
     }
   };
 
+  // ==================================================
+  // DELETE ALL EMPLOYEES
+  // ==================================================
+
+  const handleDeleteAllEmployees = async () => {
+    const confirmed =
+      window.confirm(
+        "WARNING: This will permanently delete ALL employee accounts, their assigned work, collaboration participation records, and employee sessions.\n\nYour admin account will NOT be deleted.\n\nContinue?",
+      );
+
+    if (!confirmed) {
+      return;
+    }
+
+    setError("");
+    setSuccess("");
+
+    try {
+      const message =
+        await deleteAllEmployees();
+
+      setEmployees([]);
+
+      setSuccess(message);
+    } catch (deleteError) {
+      setError(
+        deleteError instanceof Error
+          ? deleteError.message
+          : "Failed to delete employees.",
+      );
+    }
+  };
+
   return (
     <div
       className="aegis-overlay"
@@ -143,6 +187,11 @@ function EmployeeManagement({
       aria-labelledby="employee-management-title"
     >
       <div className="aegis-employee-modal">
+
+        {/* ==================================================
+            HEADER
+        ================================================== */}
+
         <div className="aegis-employee-header">
           <div>
             <div
@@ -168,10 +217,31 @@ function EmployeeManagement({
         </div>
 
         <div className="aegis-employee-content">
+
+          {/* ==================================================
+              EMPLOYEE LIST
+          ================================================== */}
+
           <section className="aegis-employee-list-section">
+
             <div className="aegis-employee-section-title">
               Employees
             </div>
+
+            <button
+              type="button"
+              className="aegis-login-button"
+              onClick={
+                handleDeleteAllEmployees
+              }
+              disabled={
+                loading ||
+                creating ||
+                employees.length === 0
+              }
+            >
+              Delete All Employees
+            </button>
 
             {loading ? (
               <div className="aegis-employee-empty">
@@ -221,12 +291,18 @@ function EmployeeManagement({
             )}
           </section>
 
+          {/* ==================================================
+              CREATE EMPLOYEE
+          ================================================== */}
+
           <section className="aegis-employee-create-section">
+
             <div className="aegis-employee-section-title">
               Add Employee
             </div>
 
             <div className="aegis-employee-form">
+
               <label>
                 Employee ID
 
@@ -321,8 +397,10 @@ function EmployeeManagement({
                   ? "Creating..."
                   : "Create Employee"}
               </button>
+
             </div>
           </section>
+
         </div>
       </div>
     </div>

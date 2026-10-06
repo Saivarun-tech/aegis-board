@@ -396,7 +396,99 @@ def create_employee(
     db.refresh(employee)
 
     return employee
+@router.delete(
+    "/../employees",
+    response_model=MessageResponse,
+)
+def delete_all_employees(
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+):
+    # Only the admin can perform this operation.
+    if current_user.role != "admin":
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Admin access required.",
+        )
 
+    # Get all employee accounts.
+    employees = db.scalars(
+        select(User).where(
+            User.role == "employee"
+        )
+    ).all()
+
+    employee_ids = [
+        employee.id
+        for employee in employees
+    ]
+
+    if not employee_ids:
+        return {
+            "message": "No employee accounts found."
+        }
+
+    # ------------------------------------------
+    # Delete collaboration participants
+    # belonging to these employees
+    # ------------------------------------------
+
+    participants = db.scalars(
+        select(CollaborationParticipant).where(
+            CollaborationParticipant.employee_id.in_(
+                employee_ids
+            )
+        )
+    ).all()
+
+    for participant in participants:
+        db.delete(participant)
+
+    # ------------------------------------------
+    # Delete work assigned to these employees
+    # ------------------------------------------
+
+    works = db.scalars(
+        select(Work).where(
+            Work.employee_id.in_(
+                employee_ids
+            )
+        )
+    ).all()
+
+    for work in works:
+        db.delete(work)
+
+    # ------------------------------------------
+    # Delete employee login sessions
+    # ------------------------------------------
+
+    sessions = db.scalars(
+        select(UserSession).where(
+            UserSession.user_id.in_(
+                employee_ids
+            )
+        )
+    ).all()
+
+    for session in sessions:
+        db.delete(session)
+
+    # ------------------------------------------
+    # Delete employee accounts
+    # ------------------------------------------
+
+    for employee in employees:
+        db.delete(employee)
+
+    db.commit()
+
+    return {
+        "message": (
+            f"Deleted {len(employees)} "
+            "employee account(s) successfully."
+        )
+    }
 
 # ==================================================
 # WORK MANAGEMENT
