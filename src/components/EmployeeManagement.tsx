@@ -5,7 +5,7 @@ import {
 
 import {
   createEmployee,
-  deleteAllEmployees,
+
   getEmployees,
   type Employee,
 } from "../auth/authApi";
@@ -146,38 +146,6 @@ function EmployeeManagement({
     }
   };
 
-  // ==================================================
-  // DELETE ALL EMPLOYEES
-  // ==================================================
-
-  const handleDeleteAllEmployees = async () => {
-    const confirmed =
-      window.confirm(
-        "WARNING: This will permanently delete ALL employee accounts, their assigned work, collaboration participation records, and employee sessions.\n\nYour admin account will NOT be deleted.\n\nContinue?",
-      );
-
-    if (!confirmed) {
-      return;
-    }
-
-    setError("");
-    setSuccess("");
-
-    try {
-      const message =
-        await deleteAllEmployees();
-
-      setEmployees([]);
-
-      setSuccess(message);
-    } catch (deleteError) {
-      setError(
-        deleteError instanceof Error
-          ? deleteError.message
-          : "Failed to delete employees.",
-      );
-    }
-  };
 
   return (
     <div
@@ -228,20 +196,7 @@ function EmployeeManagement({
               Employees
             </div>
 
-            <button
-              type="button"
-              className="aegis-login-button"
-              onClick={
-                handleDeleteAllEmployees
-              }
-              disabled={
-                loading ||
-                creating ||
-                employees.length === 0
-              }
-            >
-              Delete All Employees
-            </button>
+
 
             {loading ? (
               <div className="aegis-employee-empty">
